@@ -91,6 +91,7 @@
                     android:textColorHint="@color/white" />
 
                 <EditText
+                    android:id="@+id/email_edittext"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_marginTop="12dp"
@@ -106,6 +107,7 @@
                     android:textColorHint="@color/white" />
 
                 <EditText
+                    android:id="@+id/password_edittext"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_marginTop="12dp"
@@ -121,6 +123,7 @@
                     android:textColorHint="@color/white" />
 
                 <EditText
+                    android:id="@+id/againpassword_edittext"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_marginTop="12dp"
