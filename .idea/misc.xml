@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/PROJECT/MBank/MBank/app/src/main/res/drawable/ic_bg_edit_txt.xml" value="0.2203125" />
+        <entry key="..\:/PROJECT/MBank/MBank/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/PROJECT/MBank/MBank/app/src/main/res/layout/attention.xml" value="0.20416666666666666" />
+        <entry key="..\:/PROJECT/MBank/MBank/app/src/main/res/layout/attention_2.xml" value="0.20416666666666666" />
+        <entry key="..\:/PROJECT/MBank/MBank/app/src/main/res/layout/buy_chip_24h.xml" value="0.20416666666666666" />
+        <entry key="..\:/PROJECT/MBank/MBank/app/src/main/res/layout/home.xml" value="0.20416666666666666" />
+        <entry key="..\:/PROJECT/MBank/MBank/app/src/main/res/layout/withdraw.xml" value="0.20416666666666666" />
+        <entry key="..\:/PROJECT/Rony_2021/MBank/MBank/app/src/main/res/drawable/ic_bg_edit_txt.xml" value="0.10677083333333333" />
+        <entry key="..\:/PROJECT/Rony_2021/MBank/MBank/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/PROJECT/Rony_2021/MBank/MBank/app/src/main/res/layout/attention_2.xml" value="0.25" />
+        <entry key="..\:/PROJECT/Rony_2021/MBank/MBank/app/src/main/res/layout/buy_chip_24h.xml" value="0.20416666666666666" />
+        <entry key="..\:/PROJECT/Rony_2021/MBank/MBank/app/src/main/res/layout/gift.xml" value="0.33" />
+        <entry key="..\:/PROJECT/Rony_2021/MBank/MBank/app/src/main/res/layout/home.xml" value="0.20416666666666666" />
+        <entry key="..\:/PROJECT/Rony_2021/MBank/MBank/app/src/main/res/layout/offer.xml" value="0.20416666666666666" />
+        <entry key="..\:/PROJECT/Rony_2021/MBank/MBank/app/src/main/res/layout/settings.xml" value="0.33" />
+        <entry key="..\:/PROJECT/Rony_2021/MBank/MBank/app/src/main/res/layout/vip_id.xml" value="0.33" />
+        <entry key="..\:/PROJECT/Rony_2021/MBank/MBank/app/src/main/res/layout/withdraw.xml" value="0.22" />
+        <entry key="..\:/RONY_ABOVE/MBank/app/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/RONY_ABOVE/MBank/app/src/main/res/layout/user_register.xml" value="0.22" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

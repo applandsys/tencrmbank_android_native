@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">MBank</string>
+    <string name="mobile_number">মোবাইল নাম্বার</string>
+    <string name="password">পাসওয়ার্ড</string>
+    <string name="login">লগইন</string>
+    <string name="no_account_register">অ্যাকাউন্ট নেই? রেজিস্ট্রেশন করুন।</string>
+    <string name="buy_chips">চিপস কিনুন</string>
+    <string name="buy_poins">পয়েন্ট কিনুন</string>
+    <string name="vip">ভি আই পি</string>
+    <string name="gullak">গুল্লাক</string>
+    <string name="gold_pass">গোল্ড পাস</string>
+    <string name="gift_card">গিফট কার্ড</string>
+    <string name="free_fire">ফ্রি ফায়ার</string>
+    <string name="pubg">পাবজি</string>
+    <string name="register">রেজিস্টার</string>
+    <string name="reenter_pass">পুনরায় পাসওয়ার্ড দিন</string>
+    <string name="email_id">ইমেইল আইডি</string>
+    <string name="name">আপনার নাম</string>
+    <string name="user_registration">ব্যবহারকারী রেজিস্ট্রেশন</string>
+
+    <string name="attention_text">পয়েন্ট, গিফট কার্ড, ডায়মন্ড, পাবজি UC অথবা তিন পাত্তি গোল্ড আইডি VIP করতে অ্যাপে লগইন করুন।</string>
+    <string name="attention_text_2">গিফট, উইথড্র এবং ট্রানস্ফার করতে mBank এ চিপস কিনুন।</string>
+    <string name="get_help">সাহায্য নিন</string>
+    <string name="history_text">যে প্রোডাক্ট এর হিস্টোরি দেখতে চান সেটায় ক্লিক করুন</string>
+    <string name="contact_number">যোগাযোগের নাম্বার</string>
+    <string name="withdraw">উইথড্র</string>
+    <string name="player_id">প্লেয়ার আইডি</string>
+    <string name="gift">গিফট</string>
+    <string name="transfer">ট্রান্সফার</string>
+    <string name="history">হিস্টোরি</string>
+    <string name="buy_point_text_1">* ১০০ থেকে ৫০০০ পর্যন্ত পয়েন্ট কেনা যাবে।</string>
+    <string name="buy_point_text_2">* পয়েন্ট দিয়ে চিপস গুল্লাক/গোল্ড পাস সহ সকল প্রোডাক্ট ক্রয় করা যাবে।</string>
+    <string name="payment_method">পেমেন্ট মেথড</string>
+    <string name="settings">সেটিংস</string>
+    <string name="payment_confirm_txt1">আপনার বিকাশের পারসনাল থেকে 01313954343 নাম্বারে 35 টাকা পেমেন্ট এবং বিকাশের TrxID ট্রানজেকশন আইডি কপি করে পেস্ট করুন।</string>
+    <string name="payment_confirm_txt2">Note: বিকাশ/রকেটে পেমেন্ট অথবা সেন্ড মানি করার সময় রেফারেন্সের ঘরে G অথবা GP বসান</string>
+    <string name="helpline_number">হেল্প লাইন: +8809678272727</string>
+    <string name="dont_send_money_from_shop">দোকান থেকে টাকা পাঠাবেন না</string>
+    <string name="confirm">confirm</string>
+
+
+</resources>

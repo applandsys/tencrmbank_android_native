@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/deep_purple"
+    android:orientation="vertical"
+    tools:context=".HomeActivity">
+
+
+    <!--top navigation-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_48sdp"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <ImageButton
+            android:id="@+id/home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:layout_weight="1"
+            android:background="@color/light_purple"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/home"
+            tools:ignore="SpeakableTextPresentCheck"
+            tools:targetApi="m" />
+
+
+        <ImageButton
+            android:id="@+id/settings"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:layout_weight="1"
+            android:background="@color/light_purple"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/settings"
+            tools:ignore="SpeakableTextPresentCheck"
+            tools:targetApi="m" />
+
+        <ImageButton
+            android:id="@+id/offer"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:layout_weight="1"
+            android:background="@color/light_purple"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/gift_card"
+            tools:ignore="SpeakableTextPresentCheck"
+            tools:targetApi="m" />
+
+        <ImageButton
+            android:id="@+id/info"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/light_purple"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/information"
+            tools:ignore="SpeakableTextPresentCheck"
+            tools:targetApi="m" />
+
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_128sdp"
+                android:layout_weight="2"
+                android:orientation="horizontal"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_72sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:src="@drawable/img_place_holder"
+                    app:civ_border_color="@color/white"
+                    app:civ_border_width="0dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_72sdp"
+                    android:layout_margin="16dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/name_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Elliot Omar"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_18sdp" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Points: 1000"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_16sdp" />
+
+                    <TextView
+                        android:id="@+id/balance_edittext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chips: 100Cr"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_16sdp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_36sdp"
+                android:layout_marginBottom="2dp"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <TextView
+                    android:id="@+id/withdraw"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/light_purple"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:text="উইথড্র"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold"
+                    tools:ignore="SpeakableTextPresentCheck"
+                    tools:targetApi="m" />
+
+                <TextView
+                    android:id="@+id/gift"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/light_purple"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:text="গিফন্ট"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold"
+                    tools:ignore="SpeakableTextPresentCheck"
+                    tools:targetApi="m" />
+
+                <TextView
+                    android:id="@+id/transfer"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/light_purple"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:text="ট্রান্সফার"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold"
+                    tools:ignore="SpeakableTextPresentCheck"
+                    tools:targetApi="m" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <!--title bar-->
+                <LinearLayout
+                    android:id="@+id/buy_point"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_48sdp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/ic_home_gradient"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    tools:targetApi="m">
+
+                    <ImageView
+                        android:layout_width="@dimen/_48sdp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="12dp"
+                        android:padding="8dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_point_48" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/buy_poins"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_18sdp" />
+
+
+                </LinearLayout>
+
+                <!--column one-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_104sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <!--vip-card-->
+                    <LinearLayout
+                        android:id="@+id/vip_card"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/deep_purple"
+                        android:foreground="?attr/selectableItemBackgroundBorderless"
+                        android:orientation="vertical"
+                        tools:targetApi="m">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_84sdp"
+                            android:layout_marginTop="4dp"
+                            android:background="@color/deep_purple"
+                            android:padding="@dimen/_8sdp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/vip_icon" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_18sdp"
+                            android:layout_marginBottom="4dp"
+                            android:text="@string/vip"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+
+                    </LinearLayout>
+
+                    <!--chips-->
+                    <LinearLayout
+                        android:id="@+id/buy_chips"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/deep_purple"
+                        android:foreground="?attr/selectableItemBackgroundBorderless"
+                        android:orientation="vertical"
+                        tools:targetApi="m">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_84sdp"
+                            android:layout_marginTop="4dp"
+                            android:background="@color/deep_purple"
+                            android:padding="8dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/chips_icon" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_18sdp"
+                            android:layout_marginBottom="4dp"
+                            android:text="চিপস কিনুন"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+
+                    </LinearLayout>
+
+                    <!--gullak-->
+                    <LinearLayout
+                        android:id="@+id/gullak"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/deep_purple"
+                        android:foreground="?attr/selectableItemBackgroundBorderless"
+                        android:orientation="vertical"
+                        tools:targetApi="m">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_84sdp"
+                            android:layout_marginTop="4dp"
+                            android:background="@color/deep_purple"
+                            android:paddingLeft="8dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/gullak" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_18sdp"
+                            android:layout_marginBottom="4dp"
+                            android:text="@string/gullak"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!--column two-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_104sdp"
+                    android:layout_marginBottom="1dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <!--gift-card-->
+                    <LinearLayout
+                        android:id="@+id/gift_card"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginEnd="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/deep_purple"
+                        android:foreground="?attr/selectableItemBackgroundBorderless"
+                        android:orientation="vertical"
+                        tools:targetApi="m">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_84sdp"
+                            android:layout_marginTop="4dp"
+                            android:background="@color/deep_purple"
+                            android:padding="@dimen/_16sdp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_google_play" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_18sdp"
+                            android:layout_marginBottom="4dp"
+                            android:text="@string/gift_card"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+
+                    </LinearLayout>
+
+                    <!--gold pass-->
+                    <LinearLayout
+                        android:id="@+id/gold_pass"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginEnd="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/deep_purple"
+                        android:foreground="?attr/selectableItemBackgroundBorderless"
+                        android:orientation="vertical"
+                        tools:targetApi="m">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_84sdp"
+                            android:layout_marginTop="4dp"
+                            android:background="@color/deep_purple"
+                            android:paddingRight="18dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/gold_pass" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_18sdp"
+                            android:layout_marginBottom="4dp"
+                            android:text="@string/gold_pass"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+
+                    </LinearLayout>
+
+                    <!--pubg-->
+                    <LinearLayout
+                        android:id="@+id/pubg"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/deep_purple"
+                        android:foreground="?attr/selectableItemBackgroundBorderless"
+                        android:orientation="vertical"
+                        tools:targetApi="m">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_84sdp"
+                            android:layout_marginTop="4dp"
+                            android:background="@color/deep_purple"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/uc_icon" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_18sdp"
+                            android:layout_marginBottom="4dp"
+                            android:text="@string/pubg"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/history"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_48sdp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/ic_home_gradient"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    tools:targetApi="m">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="হিসাব পত্র"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_18sdp" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:background="@color/deep_purple"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_48sdp"
+                    android:layout_marginBottom="2dp"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:gravity="center"
+                    android:padding="3sp"
+                    android:orientation="horizontal"
+                    tools:targetApi="m">
+
+                    <Button
+                        android:id="@+id/logout_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#FF5722"
+                        android:text="Logout"
+                        app:icon="@drawable/ic_baseline_login_24">
+                    </Button>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.a10crmbank">
+
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:theme="@style/Theme.10CrMBank">
+        <activity
+            android:name=".AttentionActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Attention2Activity"
+            android:exported="true" />
+        <activity
+            android:name=".BuyChips24hActivity"
+            android:exported="true" />
+        <activity
+            android:name=".BuyPointActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ChangePasswordActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ChipsMinibankActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DollarCardActivity"
+            android:exported="true" />
+        <activity
+            android:name=".FreeFireActivity"
+            android:exported="true" />
+        <activity
+            android:name=".GiftCardActivity"
+            android:exported="true" />
+        <activity
+            android:name=".GiftActivity"
+            android:exported="true" />
+        <activity
+            android:name=".GoldPassActivity"
+            android:exported="true" />
+        <activity
+            android:name=".GullakBreakActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Help2Activity"
+            android:exported="true" />
+        <activity
+            android:name=".HelpActivity"
+            android:exported="true" />
+        <activity
+            android:name=".HistoryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".HistoryDetailsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".IdVipActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".OfferActivity"
+            android:exported="true" />
+        <activity
+            android:name=".PaymentConfirmActivity"
+            android:exported="true" />
+        <activity
+            android:name=".PaymentMethod2Activity"
+            android:exported="true" />
+        <activity
+            android:name=".PaymentMethodActivity"
+            android:exported="true" />
+        <activity
+            android:name=".PlayerIdChipsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".PubgActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RupeCardActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Settings2Activity"
+            android:exported="true" />
+        <activity
+            android:name=".TransferChipsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".TransferPointActivity"
+            android:exported="true" />
+        <activity
+            android:name=".TransferActivity"
+            android:exported="true" />
+        <activity
+            android:name=".WithdrawActivity"
+            android:exported="true" />
+
+    </application>
+
+</manifest>
