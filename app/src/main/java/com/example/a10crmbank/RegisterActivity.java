@@ -3,6 +3,7 @@ package com.example.a10crmbank;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -27,7 +28,11 @@ public class RegisterActivity extends AppCompatActivity {
 
     private EditText name_edittext,mobile_number_editext,email_edittext,password_edittext,againpassword_edittext;
     private String name, mobile_number, email, password, againpassword;
-    //private Button btn_register;
+    SharedPreferences sharedPref;
+    private final String SHARED_PREF_NAME = "mypref";
+    private final String KEY_PLAYERID = "playerid";
+    private final String KEY_USERID = "user_id";
+    private final String KEY_NAME = "name";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +43,9 @@ public class RegisterActivity extends AppCompatActivity {
         email_edittext =  findViewById(R.id.email_edittext);
         password_edittext = findViewById(R.id.password_edittext);
         againpassword_edittext = findViewById(R.id.againpassword_edittext);
+
+        sharedPref = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE) ;
+        SharedPreferences.Editor editor = sharedPref.edit();
 
         findViewById(R.id.btn_register).setOnClickListener(view -> {
 
@@ -88,9 +96,21 @@ public class RegisterActivity extends AppCompatActivity {
                                 JSONObject obj = new JSONObject(response);
                                 String message = obj.getString("message");
 
+
                                 Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
 
                                 if( obj.getBoolean("status")==true || obj.getString("signup")=="success" ){
+
+                                    Users users = new Users(
+                                            obj.getString("user_id"),
+                                            obj.getString("playerid"),
+                                            obj.getString("name"),
+                                            obj.getString("loginid")
+                                    );
+
+                                    SharedPrefManager.getInstance(getApplicationContext()).userLogin(users);
+
+
                                     startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                                 }else{
                                     Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();

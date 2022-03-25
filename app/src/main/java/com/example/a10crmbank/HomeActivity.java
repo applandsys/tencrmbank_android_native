@@ -46,6 +46,8 @@ public class HomeActivity extends AppCompatActivity {
 
         Users users = SharedPrefManager.getInstance(getApplicationContext()).getUser();
         String user_id = users.getUser_id();
+        String login_id = users.getLoginid();
+
 
         // Get Home page data from server
         //if everything is fine

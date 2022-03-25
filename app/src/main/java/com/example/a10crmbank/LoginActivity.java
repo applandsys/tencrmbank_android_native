@@ -48,6 +48,14 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        if (SharedPrefManager.getInstance(this).isLoggedIn()) {
+            finish();
+            startActivity(new Intent(this, HomeActivity.class));
+        }
+
+        Users users = SharedPrefManager.getInstance(getApplicationContext()).getUser();
+        String user_id = users.getUser_id();
+        String login_id = users.getLoginid();
 
         home = findViewById(R.id.home);
         settings = findViewById(R.id.settings);
@@ -56,13 +64,6 @@ public class LoginActivity extends AppCompatActivity {
         mobiel_number = findViewById(R.id.mobile_number);
         loin_password = findViewById(R.id.loin_password);
 
-        sharedPref = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE) ;
-        SharedPreferences.Editor editor = sharedPref.edit();
-
-        if (SharedPrefManager.getInstance(this).isLoggedIn()) {
-            finish();
-            startActivity(new Intent(this, HomeActivity.class));
-        }
         progressBar = findViewById(R.id.progressBar);
 
         home.setOnClickListener(view -> {

@@ -86,7 +86,8 @@ public class WithdrawActivity extends AppCompatActivity {
 
 
         findViewById(R.id.setting_back_imagevie).setOnClickListener(v -> {
-            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+            finish();
+           // startActivity(new Intent(getApplicationContext(),HomeActivity.class));
         });
 
 

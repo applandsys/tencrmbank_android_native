@@ -40,6 +40,7 @@ public class SharedPrefManager {
         return sharedPreferences.getString(KEY_PLAYERID, null) != null;
     }
 
+
     //this method will give the logged in user
     public Users getUser() {
         SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);

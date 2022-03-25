@@ -8,5 +8,6 @@ public class URLs {
     public static final String LOGOUT= ROOT_URL + "api/logout";
     public static final String OFFER= ROOT_URL + "api/offer";
     public static final String WITHDRAAW = ROOT_URL + "api/withdrawtpg";
+    public static final String CHANGEPASS = ROOT_URL + "api/changePass";
 
 }

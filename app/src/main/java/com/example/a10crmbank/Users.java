@@ -1,8 +1,7 @@
 package com.example.a10crmbank;
 
 public class Users {
-    private String user_id;
-    private String playerid,name,loginid;
+    private String user_id, playerid,name,loginid;
 
     public Users(String user_id, String playerid, String name, String loginid) {
         this.user_id = user_id;

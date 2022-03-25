@@ -10,5 +10,9 @@ public class Settings2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_2);
+
+        findViewById(R.id.back_imagevie).setOnClickListener(v -> {
+            finish();
+        });
     }
 }
