@@ -19,9 +19,7 @@ public class BuyChips24hActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.btn_bank_chips).setOnClickListener(view -> {
-
             startActivity(new Intent(getApplicationContext(), ChipsMinibankActivity.class));
-
         });
 
     }

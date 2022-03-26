@@ -29,13 +29,9 @@ public class ChangePasswordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.change_password);
-
         newpass_edittext = findViewById(R.id.newpass_edittext);
         confirmpass_edittext = findViewById(R.id.confirmpass_edittext);
 
-        findViewById(R.id.back_imagevie).setOnClickListener(v -> {
-            finish();
-        });
 
         findViewById(R.id.change_pass_button).setOnClickListener(v ->  {
 
@@ -53,7 +49,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
                 confirmpass_edittext.requestFocus();
                 return;
             }
-
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.CHANGEPASS,
                     new Response.Listener<String>() {
@@ -90,6 +85,12 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
 
         });
+
+
+        findViewById(R.id.back_imageview).setOnClickListener(v -> {
+            super.onBackPressed();
+        });
+
 
     }
 }

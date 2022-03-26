@@ -12,7 +12,12 @@ public class PaymentMethodActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.payment_method);
-        
+
+        // create the get Intent object
+        Intent intent = getIntent();
+
+        String mbank_id = intent.getStringExtra("mbank_id");
+        String point_amount = intent.getStringExtra("point_amount");
 
         findViewById(R.id.go_back).setOnClickListener(v -> {
             startActivity(new Intent(getApplicationContext(),HomeActivity.class));

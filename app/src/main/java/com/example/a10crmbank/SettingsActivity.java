@@ -94,12 +94,15 @@ public class SettingsActivity extends AppCompatActivity {
 
         // Get Home Page data fromm server
 
-
         findViewById(R.id.address).setOnClickListener(view -> {
             startActivity(new Intent(getApplicationContext(), Settings2Activity.class));
         });
         findViewById(R.id.change_pass).setOnClickListener(view -> {
             startActivity(new Intent(getApplicationContext(), ChangePasswordActivity.class));
+        });
+
+        findViewById(R.id.player_id_textview).setOnClickListener(view -> {
+            Toast.makeText(this,"Please set your player id",Toast.LENGTH_LONG).show();
         });
 
         setting_back_imagevie.setOnClickListener(v -> {
