@@ -53,7 +53,6 @@ public class WithdrawActivity extends AppCompatActivity {
                                 //converting response to json object
                                 JSONObject obj = new JSONObject(response);
                                 alert_text.setText(obj.getString("message"));
-                               // Toast.makeText(getApplicationContext(),response,Toast.LENGTH_LONG).show();
 
                             } catch (JSONException e) {
                                 Toast.makeText(getApplicationContext(),e.toString(),Toast.LENGTH_LONG).show();

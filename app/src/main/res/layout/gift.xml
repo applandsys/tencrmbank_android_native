@@ -57,6 +57,7 @@
             android:padding="24dp">
 
             <EditText
+                android:id="@+id/player_id_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="@drawable/ic_bg_edit_txt"
@@ -70,6 +71,7 @@
                 android:textColorHint="@color/white" />
 
             <EditText
+                android:id="@+id/chips_amount_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="8dp"

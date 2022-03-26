@@ -12,11 +12,19 @@ public class PaymentMethodActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.payment_method);
+        
+
+        findViewById(R.id.go_back).setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+        });
     }
 
     public void paymentMethod(View view) {
-
-        startActivity(new Intent(getApplicationContext(), PaymentConfirmActivity.class));
-
+        Intent intent = new Intent(getApplicationContext(), PaymentConfirmActivity.class);
+        intent.putExtra("player_id","mypid");
+        intent.putExtra("amount","myamount");
+        startActivity(intent);
     }
+
+
 }

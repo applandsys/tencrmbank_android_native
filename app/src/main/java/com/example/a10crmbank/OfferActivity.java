@@ -72,8 +72,6 @@ public class OfferActivity extends AppCompatActivity {
         };
         VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
 
-        // Get Home Page data fromm server end
-
         findViewById(R.id.setting_back_imagevie).setOnClickListener(v -> {
             startActivity(new Intent(getApplicationContext(),HomeActivity.class));
         });
