@@ -9,6 +9,7 @@ public class URLs {
     public static final String OFFER= ROOT_URL + "api/offer";
     public static final String WITHDRAAW = ROOT_URL + "api/withdrawtpg";
     public static final String GIFT_TPG = ROOT_URL + "api/gifttpg";
+    public static final String TRANSFER = ROOT_URL + "api/transfer";
     public static final String CHANGEPASS = ROOT_URL + "api/changePass";
 
 }

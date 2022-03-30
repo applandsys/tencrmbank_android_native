@@ -110,6 +110,7 @@
 
 
                 <EditText
+                    android:id="@+id/trx_id_edittext"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_marginTop="12dp"
@@ -126,6 +127,7 @@
 
 
                 <Button
+                    android:id="@+id/confirm_button"
                     android:layout_width="200dp"
                     android:layout_height="60dp"
                     android:layout_gravity="center"

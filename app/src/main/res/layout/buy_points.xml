@@ -66,6 +66,7 @@
                 android:textStyle="bold" />
 
             <EditText
+                android:id="@+id/point_amount_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="24dp"
