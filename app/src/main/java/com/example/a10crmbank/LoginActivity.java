@@ -68,7 +68,6 @@ public class LoginActivity extends AppCompatActivity {
 
         home.setOnClickListener(view -> {
             Toast.makeText(getApplicationContext(), "Register/Login First", Toast.LENGTH_SHORT).show();
-
         });
 
         settings.setOnClickListener(view -> {

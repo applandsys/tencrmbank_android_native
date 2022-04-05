@@ -34,9 +34,9 @@ public class PaymentConfirmActivity extends AppCompatActivity {
         String amount = intent.getStringExtra("point_amount");
         String transfer_type = intent.getStringExtra("transfer_type");
         String method = intent.getStringExtra("method");
+        String selected_package = intent.getStringExtra("selected_package");
 
-        Log.d("fuck","marry Liza : "+method);
-
+        Log.d("fuck","marry Tania : "+selected_package);
 
         findViewById(R.id.confirm_button).setOnClickListener((View v) -> {
 

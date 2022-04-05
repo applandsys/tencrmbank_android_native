@@ -1,7 +1,7 @@
 package com.example.a10crmbank;
 
 public class URLs {
-    private static final String ROOT_URL = "http://192.168.0.104/tencrmbank/";
+    private static final String ROOT_URL = "http://192.168.0.103/tencrmbank/";
     public static final String URL_REGISTER = ROOT_URL + "api/signup";
     public static final String URL_LOGIN= ROOT_URL + "api/login";
     public static final String ACCOUNT_INFO= ROOT_URL + "api/account";
@@ -12,4 +12,8 @@ public class URLs {
     public static final String TRANSFER = ROOT_URL + "api/transfer";
     public static final String CHANGEPASS = ROOT_URL + "api/changePass";
 
+
+    public static final String VIPPACKAGE = ROOT_URL + "api/vip_pakcage";
+    public static final String GULLACK_PACKAGE = ROOT_URL + "api/gullack_package";
+    public static final String RUPICARD_PACKAGE = ROOT_URL + "api/rupicard_package";
 }

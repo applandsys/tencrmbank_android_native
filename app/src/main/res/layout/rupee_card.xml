@@ -55,20 +55,20 @@
             android:orientation="vertical"
             android:padding="20dp">
 
-            <EditText
-                android:layout_width="match_parent"
+            <Spinner
+                android:id="@+id/packagespinner"
                 android:layout_height="60dp"
+                android:layout_width="match_parent"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/ic_bg_edit_txt"
                 android:drawableRight="@drawable/ic_down_arrow"
-                android:hint="প্যাক সিলেক্ট করুন"
                 android:inputType="phone"
                 android:paddingStart="12dp"
                 android:paddingEnd="20dp"
-                android:paddingBottom="4dp"
                 android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white" />
+                android:paddingTop="16dp"
+                android:spinnerMode="dropdown"
+                />
 
             <Button
                 android:id="@+id/submit"
