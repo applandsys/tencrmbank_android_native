@@ -12,8 +12,10 @@ public class URLs {
     public static final String TRANSFER = ROOT_URL + "api/transfer";
     public static final String CHANGEPASS = ROOT_URL + "api/changePass";
 
-
     public static final String VIPPACKAGE = ROOT_URL + "api/vip_pakcage";
     public static final String GULLACK_PACKAGE = ROOT_URL + "api/gullack_package";
     public static final String RUPICARD_PACKAGE = ROOT_URL + "api/rupicard_package";
+// Version 2//
+    public static final String PAYMENT_INSTRUCTION = ROOT_URL + "api/v2/payment_instuction";
+    public static final String PAYMENT_CONRIFM = ROOT_URL + "api/v2/payment_confirm";
 }

@@ -1,10 +1,14 @@
 package com.example.a10crmbank;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +18,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,26 +29,78 @@ public class PaymentConfirmActivity extends AppCompatActivity {
     EditText trx_id_edittext ;
     String trx_id;
 
+    TextView payment_instruction, hotline, notice, note;
+
+    String mbank_id , amount , transaction_type, method,selected_package,player_id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.payment_confirm);
         trx_id_edittext = findViewById(R.id.trx_id_edittext);
+        payment_instruction =  findViewById(R.id.payment_instruction);
+        hotline =  findViewById(R.id.hotline);
+        notice =  findViewById(R.id.notice);
+        note =  findViewById(R.id.note);
 
         Intent intent = getIntent();
 
-        String mbank_id = intent.getStringExtra("mbank_id");
-        String amount = intent.getStringExtra("point_amount");
-        String transfer_type = intent.getStringExtra("transfer_type");
-        String method = intent.getStringExtra("method");
-        String selected_package = intent.getStringExtra("selected_package");
+         mbank_id = intent.getStringExtra("mbank_id");
+         if(mbank_id==null){
+             mbank_id = "0";
+         }
+         amount = intent.getStringExtra("amount");
+        if(amount==null){
+            amount = "0";
+        }
 
-        Log.d("fuck","marry Tania : "+selected_package);
+         transaction_type = intent.getStringExtra("transaction_type");
+         method = intent.getStringExtra("method");
+         selected_package = intent.getStringExtra("selected_package");
+        if(selected_package==null){
+            selected_package = "0";
+        }
+         player_id = intent.getStringExtra("player_id");
+
+
+        StringRequest stringRequest1 = new StringRequest(Request.Method.POST,URLs.PAYMENT_INSTRUCTION,
+                    response -> {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String instruction_text = jsonObject.getString("message");
+                            String hotline_text = jsonObject.getString("hotline");
+                            String notice_text = jsonObject.getString("notice");
+                            String note_text = jsonObject.getString("note");
+                            payment_instruction.setText(instruction_text);
+                            hotline.setText(hotline_text);
+                            notice.setText(notice_text);
+                            note.setText(note_text);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    },
+                    error -> {
+
+                    }
+                ){
+                    protected Map<String,String> getParams() throws AuthFailureError{
+                        Map<String,String> params = new HashMap<>();
+                        params.put("mbank_id",mbank_id);
+                        params.put("amount",amount);
+                        params.put("transaction_type",transaction_type);
+                        params.put("method",method);
+                        params.put("selected_package",selected_package);
+                        params.put("player_id",player_id);
+                        return params;
+                    }
+                 };
+
+        VolleySingleton.getInstance(this).addToRequestQueue(stringRequest1);
+
 
         findViewById(R.id.confirm_button).setOnClickListener((View v) -> {
 
-            Log.d("fuck","Confirm to :"+method);
-        /*
             trx_id = trx_id_edittext.getText().toString();
 
             if(TextUtils.isEmpty(trx_id)){
@@ -50,7 +109,7 @@ public class PaymentConfirmActivity extends AppCompatActivity {
                 return;
             }
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.TRANSFER,
+            StringRequest stringRequestConfirm = new StringRequest(Request.Method.POST, URLs.PAYMENT_CONRIFM,
                     response -> {
 
                     },
@@ -62,16 +121,21 @@ public class PaymentConfirmActivity extends AppCompatActivity {
                             params.put("trx_id",trx_id);
                             params.put("mbank_id",mbank_id);
                             params.put("amount",amount);
-                            params.put("transfer_type",transfer_type);
+                            params.put("transaction_type",transaction_type);
                             params.put("method",method);
+                            params.put("selected_package",selected_package);
+                            params.put("player_id",player_id);
                             return params;
                         }
                     };
 
-            VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
+            VolleySingleton.getInstance(this).addToRequestQueue(stringRequestConfirm);
 
-            */
 
+        });
+
+        findViewById(R.id.back_imageview).setOnClickListener(view ->{
+            super.onBackPressed();
         });
 
     }

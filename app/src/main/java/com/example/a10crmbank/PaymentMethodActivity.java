@@ -2,20 +2,20 @@ package com.example.a10crmbank;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class PaymentMethodActivity extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.payment_method);
 
-        findViewById(R.id.go_back).setOnClickListener((View v) -> {
-            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+        findViewById(R.id.back_imageview).setOnClickListener(View ->{
+            super.onBackPressed();
         });
 
     }
@@ -23,10 +23,12 @@ public class PaymentMethodActivity extends AppCompatActivity {
     public void paymentMethod(View view) {
         Intent intent = getIntent();
         String mbank_id = intent.getStringExtra("mbank_id");
-        String point_amount = intent.getStringExtra("point_amount");
-        String transfer_type = intent.getStringExtra("transfer_type");
         String transaction_type = intent.getStringExtra("transaction_type");
         String selected_package = intent.getStringExtra("selected_package");
+        String amount = intent.getStringExtra("amount");
+        // BUY TPG
+        String player_id = intent.getStringExtra("player_id");
+
 
         Integer  button_id = view.getId();
         String pay_method="default";
@@ -44,11 +46,11 @@ public class PaymentMethodActivity extends AppCompatActivity {
 
         Intent pintent = new Intent(getApplicationContext(), PaymentConfirmActivity.class);
         pintent.putExtra("mbank_id",mbank_id);
-        pintent.putExtra("amount",point_amount);
-        pintent.putExtra("transfer_type",transfer_type);
+        pintent.putExtra("amount",amount);
         pintent.putExtra("method",pay_method);
         pintent.putExtra("transaction_type",transaction_type);
         pintent.putExtra("selected_package",selected_package);
+        pintent.putExtra("player_id",player_id);
         startActivity(pintent);
     }
 

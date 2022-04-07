@@ -10,10 +10,17 @@
         <entry key="..\:/PROJECT/RONY/MBank/app/src/main/res/drawable/bg_white_shadow_mudpurple.xml" value="0.123" />
         <entry key="..\:/PROJECT/RONY/MBank/app/src/main/res/drawable/borderbottom.xml" value="0.123" />
         <entry key="..\:/PROJECT/RONY/MBank/app/src/main/res/drawable/ic_bg_edit_txt.xml" value="0.1" />
+        <entry key="..\:/PROJECT/RONY/MBank/app/src/main/res/drawable/shape_rectangle_white_outline.xml" value="0.11" />
+        <entry key="..\:/PROJECT/RONY/MBank/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
+        <entry key="..\:/PROJECT/RONY/MBank/app/src/main/res/layout/buy_chip_24h.xml" value="0.21" />
+        <entry key="..\:/PROJECT/RONY/MBank/app/src/main/res/layout/buy_in_player_id.xml" value="0.18" />
         <entry key="..\:/PROJECT/RONY/MBank/app/src/main/res/layout/dollar_card.xml" value="0.17407407407407408" />
         <entry key="..\:/PROJECT/RONY/MBank/app/src/main/res/layout/gullak_break.xml" value="0.22" />
         <entry key="..\:/PROJECT/RONY/MBank/app/src/main/res/layout/package_list.xml" value="0.18" />
+        <entry key="..\:/PROJECT/RONY/MBank/app/src/main/res/layout/payment_confirm.xml" value="0.25" />
+        <entry key="..\:/PROJECT/RONY/MBank/app/src/main/res/layout/payment_method.xml" value="0.17" />
         <entry key="..\:/PROJECT/RONY/MBank/app/src/main/res/layout/rupee_card.xml" value="0.25" />
+        <entry key="..\:/PROJECT/RONY/MBank/app/src/main/res/layout/user_register.xml" value="0.20416666666666666" />
         <entry key="..\:/PROJECT/RONY/MBank/app/src/main/res/layout/vip_id.xml" value="0.1" />
         <entry key="..\:/PROJECT/RONY/MBank/app/src/main/res/layout/vip_package.xml" value="0.1" />
       </map>
