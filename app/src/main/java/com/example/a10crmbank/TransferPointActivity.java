@@ -39,7 +39,7 @@ public class TransferPointActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(),PaymentMethodActivity.class);
             intent.putExtra("mbank_id",mbank_id);
             intent.putExtra("point_amount",point_amount);
-            intent.putExtra("transfer_type","point");
+            intent.putExtra("transaction_type","transfer_point");
 
             startActivity(intent);
         });

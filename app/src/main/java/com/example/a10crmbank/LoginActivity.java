@@ -189,12 +189,6 @@ public class LoginActivity extends AppCompatActivity {
 
                     VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
 
-
-            // 1. volly request
-            // 2. return code shared pref dia login
-
-          //  editor.putString(KEY_PLAYERID,);
-           // startActivity(new Intent(getApplicationContext(), HomeActivity.class));
         });
 
         findViewById(R.id.txy_register).setOnClickListener(view -> {

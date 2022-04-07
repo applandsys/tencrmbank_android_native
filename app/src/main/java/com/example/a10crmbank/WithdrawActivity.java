@@ -71,8 +71,8 @@ public class WithdrawActivity extends AppCompatActivity {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> params = new HashMap<>();
-                    params.put("action", "withdraw");
-                    params.put("version", "1");
+                    params.put("transaction_type", "withdraw");
+                    params.put("version", "2");
                     params.put("chips", withdraw_input_value);
                     params.put("userid", user_id);
                     params.put("loginid", login_id);

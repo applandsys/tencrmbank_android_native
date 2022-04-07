@@ -12,6 +12,12 @@ public class HistoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.history);
+
+        Users users = SharedPrefManager.getInstance(getApplicationContext()).getUser();
+        String user_id = users.getUser_id();
+        String login_id = users.getLoginid();
+
+
     }
 
     public void startHistory(View view) {

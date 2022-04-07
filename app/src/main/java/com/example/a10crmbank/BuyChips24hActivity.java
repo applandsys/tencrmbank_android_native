@@ -13,9 +13,7 @@ public class BuyChips24hActivity extends AppCompatActivity {
         setContentView(R.layout.buy_chip_24h);
 
         findViewById(R.id.btn_id_chips).setOnClickListener(view -> {
-
             startActivity(new Intent(getApplicationContext(), PlayerIdChipsActivity.class));
-
         });
 
         findViewById(R.id.btn_bank_chips).setOnClickListener(view -> {

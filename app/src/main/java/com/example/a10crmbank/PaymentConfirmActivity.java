@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -61,7 +62,9 @@ public class PaymentConfirmActivity extends AppCompatActivity {
             selected_package = "0";
         }
          player_id = intent.getStringExtra("player_id");
-
+        if(player_id==null){
+            player_id = "0";
+        }
 
         StringRequest stringRequest1 = new StringRequest(Request.Method.POST,URLs.PAYMENT_INSTRUCTION,
                     response -> {
@@ -77,11 +80,12 @@ public class PaymentConfirmActivity extends AppCompatActivity {
                             note.setText(note_text);
 
                         } catch (JSONException e) {
+                            Log.d("fuck",e.toString());
                             e.printStackTrace();
                         }
                     },
                     error -> {
-
+                        Log.d("fuck",error.toString());
                     }
                 ){
                     protected Map<String,String> getParams() throws AuthFailureError{
@@ -100,9 +104,7 @@ public class PaymentConfirmActivity extends AppCompatActivity {
 
 
         findViewById(R.id.confirm_button).setOnClickListener((View v) -> {
-
             trx_id = trx_id_edittext.getText().toString();
-
             if(TextUtils.isEmpty(trx_id)){
                 trx_id_edittext.setError("Plese input TrxId");
                 trx_id_edittext.requestFocus();
@@ -111,10 +113,18 @@ public class PaymentConfirmActivity extends AppCompatActivity {
 
             StringRequest stringRequestConfirm = new StringRequest(Request.Method.POST, URLs.PAYMENT_CONRIFM,
                     response -> {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String status = jsonObject.getString("status");
+                            String message_text = jsonObject.getString("message");
 
+                            Toast.makeText(this,message_text,Toast.LENGTH_LONG).show();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     },
                     error -> {
-
+                        Log.d("fuck",error.toString());
                     }){
                         protected Map<String,String> getParam() throws AuthFailureError{
                             Map<String, String> params = new HashMap<>();
@@ -130,7 +140,6 @@ public class PaymentConfirmActivity extends AppCompatActivity {
                     };
 
             VolleySingleton.getInstance(this).addToRequestQueue(stringRequestConfirm);
-
 
         });
 

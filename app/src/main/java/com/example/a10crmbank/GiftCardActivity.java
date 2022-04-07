@@ -11,9 +11,11 @@ public class GiftCardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.google_gift_card);
+
         findViewById(R.id.dollar_card).setOnClickListener(view -> {
             startActivity(new Intent(getApplicationContext(), DollarCardActivity.class));
         });
+
         findViewById(R.id.rupee_card).setOnClickListener(view -> {
             startActivity(new Intent(getApplicationContext(), RupeCardActivity.class));
         });

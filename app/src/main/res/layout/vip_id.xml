@@ -21,6 +21,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/back_imageview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -56,6 +57,7 @@
             android:padding="24dp">
 
             <EditText
+                android:id="@+id/player_id_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="@drawable/ic_bg_edit_txt"
@@ -71,18 +73,10 @@
             <!--Spinner widget-->
             <Spinner
                 android:id="@+id/packagespinner"
-                android:layout_height="60dp"
                 android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/ic_bg_edit_txt"
-                android:drawableRight="@drawable/ic_down_arrow"
-                android:inputType="phone"
-                android:paddingStart="12dp"
-                android:paddingEnd="20dp"
-                android:paddingBottom="4dp"
-                android:textAlignment="center"
-                android:paddingTop="16dp"
-                />
+                android:paddingRight="30dp"
+                android:background="@drawable/borderbottom"
+                android:layout_height="50dp"></Spinner>
 
             <Button
                 android:id="@+id/submit"

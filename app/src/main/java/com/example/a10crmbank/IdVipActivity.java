@@ -3,10 +3,12 @@ package com.example.a10crmbank;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -34,10 +36,13 @@ public class IdVipActivity extends AppCompatActivity {
 
     Spinner spinner;
     Button button;
+    EditText player_id_edittext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vip_id);
+
+        player_id_edittext =  findViewById(R.id.player_id_edittext);
 
         spinner = findViewById(R.id.packagespinner);
         button = findViewById(R.id.submit);
@@ -54,35 +59,12 @@ public class IdVipActivity extends AppCompatActivity {
                             JSONArray arr = new JSONArray(response);
                             for(int i=0; i< arr.length();i++){
                                 JSONObject obj = arr.getJSONObject(i);
-                               /*
-                                Dropdown dropdown = new Dropdown(
-                                        obj.getString("name")
-                                );
-                                */
-
                                 names.add(obj.getString("name"));
-                                    Log.d("fuck",obj.getString("name"));
                             }
 
-
-                            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.vip_package,R.id
+                            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.package_list,R.id
                                     .package_item,names);
                             spinner.setAdapter(adapter);
-                            /*
-                             //converting response to json object
-                            JSONObject obj = new JSONObject(response);
-
-                            for(int i=0;i<obj.length();i++) {
-                                Dropdown dropdown = new Dropdown(
-                                        obj.getString("id"),
-                                        obj.getString("name")
-                                );
-                                Log.d("Fuck", obj.getString("name"));
-                                packages.add(dropdown);
-                            }
-
-                           // Log.i("fuck",obj.getString("name"));
-                                */
 
                         } catch (JSONException e) {
                             Toast.makeText(getApplicationContext(),e.toString(),Toast.LENGTH_LONG).show();
@@ -111,12 +93,28 @@ public class IdVipActivity extends AppCompatActivity {
 
 
        button.setOnClickListener(view -> {
-           String selected_item =  spinner.getSelectedItem().toString();
-         //  Log.d("fuck",selected_item);
+           String player_id = player_id_edittext.getText().toString();
+           if(TextUtils.isEmpty(player_id)){
+               player_id_edittext.setError("Put player Id");
+               player_id_edittext.requestFocus();
+               return;
+           }
+
+
+           Integer ide =spinner.getSelectedItemPosition();
+           String selected_item =  ide.toString();
+           Log.d("fuck",selected_item);
+
            Intent intent =  new Intent(getApplicationContext(), PaymentMethodActivity.class);
+           intent.putExtra("transaction_type","vip_buy");
+           intent.putExtra("player_id",player_id);
            intent.putExtra("selected_package",selected_item);
            startActivity(intent);
        });
+
+        findViewById(R.id.back_imageview).setOnClickListener(view ->{
+            super.onBackPressed();
+        });
 
     }
 }

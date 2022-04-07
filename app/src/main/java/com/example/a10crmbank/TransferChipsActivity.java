@@ -39,7 +39,7 @@ public class TransferChipsActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(),PaymentMethodActivity.class);
             intent.putExtra("mbank_id",mbank_id);
             intent.putExtra("point_amount",point_amount);
-            intent.putExtra("transfer_type","chips");
+            intent.putExtra("transaction_type","transfer_chips");
             startActivity(intent);
         });
     }

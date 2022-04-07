@@ -46,7 +46,7 @@ public class RupeCardActivity extends AppCompatActivity {
                             for(int i=0; i< arr.length();i++){
                                 JSONObject obj = arr.getJSONObject(i);
                                 names.add(obj.getString("name"));
-                                Log.d("fuck",obj.getString("name"));
+
                             }
 
                             ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.package_list,R.id
@@ -70,8 +70,8 @@ public class RupeCardActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("action", "login");
-                params.put("version", "1");
+                params.put("request_type", "rupi_card_package");
+                params.put("version", "2");
                 return params;
             }
         };
@@ -80,9 +80,11 @@ public class RupeCardActivity extends AppCompatActivity {
 
 
         button.setOnClickListener(view -> {
-            String selected_item =  spinner.getSelectedItem().toString();
-            Log.d("fuck",selected_item);
+            Integer ide =spinner.getSelectedItemPosition();
+            String selected_item =  ide.toString();
+
             Intent intent =  new Intent(getApplicationContext(), PaymentMethodActivity.class);
+            intent.putExtra("transaction_type","rupi_card");
             intent.putExtra("selected_package",selected_item);
             startActivity(intent);
         });

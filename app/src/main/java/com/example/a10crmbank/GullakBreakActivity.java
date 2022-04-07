@@ -3,9 +3,11 @@ package com.example.a10crmbank;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -30,6 +32,7 @@ public class GullakBreakActivity extends AppCompatActivity {
 
     Spinner spinner;
     Button button;
+    EditText player_id_edittext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,8 @@ public class GullakBreakActivity extends AppCompatActivity {
         setContentView(R.layout.gullak_break);
         spinner = findViewById(R.id.packagespinner);
         button = findViewById(R.id.submit);
+
+        player_id_edittext = findViewById(R.id.player_id_edittext);
 
         ArrayList<String> names = new ArrayList<String>();
 
@@ -50,7 +55,6 @@ public class GullakBreakActivity extends AppCompatActivity {
                             for(int i=0; i< arr.length();i++){
                                 JSONObject obj = arr.getJSONObject(i);
                                 names.add(obj.getString("name"));
-                                Log.d("fuck",obj.getString("name"));
                             }
 
                             ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.package_list,R.id
@@ -84,11 +88,28 @@ public class GullakBreakActivity extends AppCompatActivity {
 
 
         button.setOnClickListener(view -> {
-            String selected_item =  spinner.getSelectedItem().toString();
-              Log.d("fuck",selected_item);
+            String player_id = player_id_edittext.getText().toString();
+            if(TextUtils.isEmpty(player_id)){
+                player_id_edittext.setError("Put player Id");
+                player_id_edittext.requestFocus();
+                return;
+            }
+
+            Integer ide =spinner.getSelectedItemPosition();
+            String selected_item =  ide.toString();
+
+
             Intent intent =  new Intent(getApplicationContext(), PaymentMethodActivity.class);
+            intent.putExtra("transaction_type","gullak_break");
+            intent.putExtra("player_id",player_id);
             intent.putExtra("selected_package",selected_item);
             startActivity(intent);
         });
+
+
+        findViewById(R.id.back_imageview).setOnClickListener(view ->{
+            super.onBackPressed();
+        });
+
     }
 }
