@@ -68,6 +68,7 @@ public class PaymentConfirmActivity extends AppCompatActivity {
 
         StringRequest stringRequest1 = new StringRequest(Request.Method.POST,URLs.PAYMENT_INSTRUCTION,
                     response -> {
+                            Log.d("fuck",response.toString());
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String instruction_text = jsonObject.getString("message");

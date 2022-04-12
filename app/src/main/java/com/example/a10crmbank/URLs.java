@@ -11,7 +11,6 @@ public class URLs {
     public static final String TRANSFER = ROOT_URL + "api/transfer";
     public static final String CHANGEPASS = ROOT_URL + "api/changePass";
 
-
 // Version 2//
     public static final String WITHDRAAW = ROOT_URL + "api/v2/withdrawtpg";
     public static final String GIFT_TPG = ROOT_URL + "api/v2/gifttpg";

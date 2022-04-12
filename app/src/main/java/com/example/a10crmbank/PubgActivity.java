@@ -76,7 +76,12 @@ public class PubgActivity extends AppCompatActivity {
         VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
 
         findViewById(R.id.submit).setOnClickListener(view -> {
+            Integer ide =spinner.getSelectedItemPosition();
+            String selected_item =  ide.toString();
+
             Intent intent = new Intent(getApplicationContext(), PaymentMethodActivity.class);
+            intent.putExtra("transaction_type","pubg_uc");
+            intent.putExtra("selected_package",selected_item);
             startActivity(intent);
         });
     }
