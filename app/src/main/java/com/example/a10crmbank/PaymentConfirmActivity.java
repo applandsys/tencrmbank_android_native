@@ -118,8 +118,6 @@ public class PaymentConfirmActivity extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(response);
                             String status = jsonObject.getString("status");
                             String message_text = jsonObject.getString("message");
-
-                            Toast.makeText(this,message_text,Toast.LENGTH_LONG).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -127,7 +125,7 @@ public class PaymentConfirmActivity extends AppCompatActivity {
                     error -> {
                         Log.d("fuck",error.toString());
                     }){
-                        protected Map<String,String> getParam() throws AuthFailureError{
+                        protected Map<String,String> getParams() throws AuthFailureError{
                             Map<String, String> params = new HashMap<>();
                             params.put("trx_id",trx_id);
                             params.put("mbank_id",mbank_id);
