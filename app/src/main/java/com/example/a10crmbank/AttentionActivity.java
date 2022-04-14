@@ -17,5 +17,9 @@ public class AttentionActivity extends AppCompatActivity {
             startActivity(new Intent(new Intent(getApplicationContext(), HelpActivity.class)));
         });
 
+        findViewById(R.id.back_imagevie).setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+        });
+
     }
 }

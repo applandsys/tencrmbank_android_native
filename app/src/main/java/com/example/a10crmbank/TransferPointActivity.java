@@ -44,5 +44,9 @@ public class TransferPointActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        findViewById(R.id.back_imageview).setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(),TransferActivity.class));
+        });
+
     }
 }

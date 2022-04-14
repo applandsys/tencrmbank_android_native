@@ -20,8 +20,8 @@ public class BuyChips24hActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), ChipsMinibankActivity.class));
         });
 
-        findViewById(R.id.back_imageview).setOnClickListener(view ->{
-            super.onBackPressed();
+        findViewById(R.id.back_imageview).setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
         });
 
     }

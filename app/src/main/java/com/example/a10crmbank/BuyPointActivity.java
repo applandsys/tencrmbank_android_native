@@ -35,8 +35,7 @@ public class BuyPointActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.back_imageview).setOnClickListener(v -> {
-            super.onBackPressed();
-            // startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
         });
 
     }

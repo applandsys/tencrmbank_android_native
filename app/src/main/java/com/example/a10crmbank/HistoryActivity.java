@@ -17,6 +17,10 @@ public class HistoryActivity extends AppCompatActivity {
         String user_id = users.getUser_id();
         String login_id = users.getLoginid();
 
+        findViewById(R.id.back_imageview).setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+        });
+
 
     }
 

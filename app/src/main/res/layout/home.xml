@@ -480,17 +480,7 @@
                     android:gravity="center"
                     android:padding="3sp"
                     android:orientation="horizontal"
-                    tools:targetApi="m">
-
-                    <Button
-                        android:id="@+id/logout_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="#FF5722"
-                        android:text="Logout"
-                        app:icon="@drawable/ic_baseline_login_24">
-                    </Button>
-                </LinearLayout>
+                    tools:targetApi="m"/>
 
             </LinearLayout>
 

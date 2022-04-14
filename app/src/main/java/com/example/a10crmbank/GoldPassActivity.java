@@ -30,5 +30,10 @@ public class GoldPassActivity extends AppCompatActivity {
 
         });
 
+        findViewById(R.id.back_imageview).setOnClickListener(View ->{
+            super.onBackPressed();
+        });
+
+
     }
 }

@@ -86,9 +86,8 @@ public class GiftActivity extends AppCompatActivity {
 
         });
 
-        findViewById(R.id.back_imagevie).setOnClickListener(v -> {
-            super.onBackPressed();
-           // startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+        findViewById(R.id.back_imageview).setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
         });
 
     }

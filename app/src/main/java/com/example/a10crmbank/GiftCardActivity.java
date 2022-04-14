@@ -19,5 +19,10 @@ public class GiftCardActivity extends AppCompatActivity {
         findViewById(R.id.rupee_card).setOnClickListener(view -> {
             startActivity(new Intent(getApplicationContext(), RupeCardActivity.class));
         });
+
+
+        findViewById(R.id.back_imageview).setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+        });
     }
 }

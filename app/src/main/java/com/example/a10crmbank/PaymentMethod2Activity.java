@@ -10,5 +10,10 @@ public class PaymentMethod2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.payment_method_2);
+
+        findViewById(R.id.back_imageview).setOnClickListener(View ->{
+            super.onBackPressed();
+        });
+
     }
 }

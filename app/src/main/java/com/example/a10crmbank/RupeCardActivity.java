@@ -88,5 +88,9 @@ public class RupeCardActivity extends AppCompatActivity {
             intent.putExtra("selected_package",selected_item);
             startActivity(intent);
         });
+
+        findViewById(R.id.back_imageview).setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(),GiftCardActivity.class));
+        });
     }
 }

@@ -43,8 +43,8 @@ public class PlayerIdChipsActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        findViewById(R.id.back_imageview).setOnClickListener(View ->{
-            super.onBackPressed();
+        findViewById(R.id.back_imageview).setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(),BuyChips24hActivity.class));
         });
 
     }

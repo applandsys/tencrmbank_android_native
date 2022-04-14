@@ -18,6 +18,10 @@ public class ChipsMinibankActivity extends AppCompatActivity {
 
         });
 
+        findViewById(R.id.back_imagevie).setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+        });
+
 
     }
 }

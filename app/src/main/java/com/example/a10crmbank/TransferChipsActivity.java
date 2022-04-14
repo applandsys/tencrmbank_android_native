@@ -42,5 +42,10 @@ public class TransferChipsActivity extends AppCompatActivity {
             intent.putExtra("transaction_type","transfer_chips");
             startActivity(intent);
         });
+
+        findViewById(R.id.back_imageview).setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(),TransferActivity.class));
+        });
+
     }
 }

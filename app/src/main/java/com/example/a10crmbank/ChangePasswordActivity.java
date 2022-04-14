@@ -1,5 +1,6 @@
 package com.example.a10crmbank;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -88,7 +89,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
 
         findViewById(R.id.back_imageview).setOnClickListener(v -> {
-            super.onBackPressed();
+            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
         });
 
 

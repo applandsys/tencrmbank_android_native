@@ -148,10 +148,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         });
 
-        findViewById(R.id.btn_login).setOnClickListener(view -> {
-
+        findViewById(R.id.back_imageview).setOnClickListener(view -> {
             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-
         });
 
     }

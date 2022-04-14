@@ -105,8 +105,40 @@ public class SettingsActivity extends AppCompatActivity {
             Toast.makeText(this,"Please set your player id",Toast.LENGTH_LONG).show();
         });
 
-        setting_back_imagevie.setOnClickListener(v -> {
-            finish();
+        findViewById(R.id.back_imageview).setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+        });
+
+        findViewById(R.id.logout_button).setOnClickListener(v -> {
+
+            // Server e logout request send korte hobe
+            StringRequest stringRequest1 = new StringRequest(Request.Method.POST, URLs.LOGOUT,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+
+                        }
+                    }
+            ){
+                @Override
+                protected Map<String,String> getParams() throws AuthFailureError{
+                    Map<String,String> params = new HashMap<>();
+                    params.put("action","logout");
+                    params.put("user_id",user_id);
+                    return params;
+                }
+            };
+
+            VolleySingleton.getInstance(this).addToRequestQueue(stringRequest1);
+            // Shared Preference Remove korte hobe
+            SharedPrefManager.getInstance(getApplicationContext()).logout();
+            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
         });
 
     }

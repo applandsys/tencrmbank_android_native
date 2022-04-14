@@ -112,8 +112,8 @@ public class IdVipActivity extends AppCompatActivity {
            startActivity(intent);
        });
 
-        findViewById(R.id.back_imageview).setOnClickListener(view ->{
-            super.onBackPressed();
+        findViewById(R.id.back_imageview).setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
         });
 
     }
