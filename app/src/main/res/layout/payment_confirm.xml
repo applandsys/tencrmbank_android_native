@@ -122,7 +122,7 @@
                     android:background="@drawable/ic_bg_edit_txt"
                     android:drawableEnd="@drawable/ic_baseline_info_24"
                     android:hint="bKash TrxID"
-                    android:inputType="phone"
+                    android:inputType="text"
                     android:paddingStart="12dp"
                     android:paddingEnd="20dp"
                     android:paddingBottom="4dp"

@@ -28,11 +28,8 @@ import java.util.Map;
 public class PaymentConfirmActivity extends AppCompatActivity {
 
     EditText trx_id_edittext ;
-    String trx_id;
-
     TextView payment_instruction, hotline, notice, note;
-
-    String mbank_id , amount , transaction_type, method,selected_package,player_id;
+    String mbank_id , amount , transaction_type, method,selected_package,player_id, login_id , user_id, trx_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +40,15 @@ public class PaymentConfirmActivity extends AppCompatActivity {
         hotline =  findViewById(R.id.hotline);
         notice =  findViewById(R.id.notice);
         note =  findViewById(R.id.note);
+
+
+        Users users = SharedPrefManager.getInstance(getApplicationContext()).getUser();
+        user_id = users.getUser_id();
+        login_id = users.getLoginid();
+
+        if(user_id==null){
+            user_id= "0";
+        }
 
         Intent intent = getIntent();
 
@@ -68,7 +74,7 @@ public class PaymentConfirmActivity extends AppCompatActivity {
 
         StringRequest stringRequest1 = new StringRequest(Request.Method.POST,URLs.PAYMENT_INSTRUCTION,
                     response -> {
-                            Log.d("fuck",response.toString());
+
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String instruction_text = jsonObject.getString("message");
@@ -92,6 +98,7 @@ public class PaymentConfirmActivity extends AppCompatActivity {
                     protected Map<String,String> getParams() throws AuthFailureError{
                         Map<String,String> params = new HashMap<>();
                         params.put("mbank_id",mbank_id);
+                        params.put("user_id",user_id);
                         params.put("amount",amount);
                         params.put("transaction_type",transaction_type);
                         params.put("method",method);
@@ -105,6 +112,8 @@ public class PaymentConfirmActivity extends AppCompatActivity {
 
 
         findViewById(R.id.confirm_button).setOnClickListener((View v) -> {
+            Log.d("fuck","btn click");
+
             trx_id = trx_id_edittext.getText().toString();
             if(TextUtils.isEmpty(trx_id)){
                 trx_id_edittext.setError("Plese input TrxId");
@@ -114,10 +123,12 @@ public class PaymentConfirmActivity extends AppCompatActivity {
 
             StringRequest stringRequestConfirm = new StringRequest(Request.Method.POST, URLs.PAYMENT_CONRIFM,
                     response -> {
+                        Log.d("fuck",response.toString());
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String status = jsonObject.getString("status");
                             String message_text = jsonObject.getString("message");
+                            Log.d("fuck",message_text);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -128,6 +139,7 @@ public class PaymentConfirmActivity extends AppCompatActivity {
                         protected Map<String,String> getParams() throws AuthFailureError{
                             Map<String, String> params = new HashMap<>();
                             params.put("trx_id",trx_id);
+                            params.put("user_id",user_id);
                             params.put("mbank_id",mbank_id);
                             params.put("amount",amount);
                             params.put("transaction_type",transaction_type);
