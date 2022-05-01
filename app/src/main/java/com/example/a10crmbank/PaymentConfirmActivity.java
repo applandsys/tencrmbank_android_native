@@ -6,11 +6,15 @@ import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
@@ -67,6 +71,8 @@ public class PaymentConfirmActivity extends AppCompatActivity {
         if(selected_package==null){
             selected_package = "0";
         }
+
+        Log.d("fuck",selected_package);
          player_id = intent.getStringExtra("player_id");
         if(player_id==null){
             player_id = "0";
@@ -87,12 +93,12 @@ public class PaymentConfirmActivity extends AppCompatActivity {
                             note.setText(note_text);
 
                         } catch (JSONException e) {
-                            Log.d("fuck",e.toString());
+                            Log.d("fuck","Error possibility try block");
                             e.printStackTrace();
                         }
                     },
                     error -> {
-                        Log.d("fuck",error.toString());
+                        Log.d("fuck","Error possibility response blokc");
                     }
                 ){
                     protected Map<String,String> getParams() throws AuthFailureError{
@@ -104,6 +110,8 @@ public class PaymentConfirmActivity extends AppCompatActivity {
                         params.put("method",method);
                         params.put("selected_package",selected_package);
                         params.put("player_id",player_id);
+                        params.put("user_id",user_id);
+                        params.put("login_id",login_id);
                         return params;
                     }
                  };
@@ -112,7 +120,6 @@ public class PaymentConfirmActivity extends AppCompatActivity {
 
 
         findViewById(R.id.confirm_button).setOnClickListener((View v) -> {
-            Log.d("fuck","btn click");
 
             trx_id = trx_id_edittext.getText().toString();
             if(TextUtils.isEmpty(trx_id)){
@@ -123,12 +130,42 @@ public class PaymentConfirmActivity extends AppCompatActivity {
 
             StringRequest stringRequestConfirm = new StringRequest(Request.Method.POST, URLs.PAYMENT_CONRIFM,
                     response -> {
-                        Log.d("fuck",response.toString());
+
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String status = jsonObject.getString("status");
+                            String title = jsonObject.getString("title");
                             String message_text = jsonObject.getString("message");
-                            Log.d("fuck",message_text);
+
+                            if(transaction_type=="rupi_card"){
+                                startActivity(new Intent(getApplicationContext(),OtpConfirmActivity.class));
+                            }else if(transaction_type=="dollar_card"){
+                                startActivity(new Intent(getApplicationContext(),OtpConfirmActivity.class));
+                            }
+
+                            // alert dialog
+                            final AlertDialog.Builder builder = new AlertDialog.Builder(PaymentConfirmActivity.this,R.style.CustomAlertDialog);
+                            ViewGroup viewGroup = findViewById(android.R.id.content);
+                            View dialogView = LayoutInflater.from(PaymentConfirmActivity.this).inflate(R.layout.customview, viewGroup, false);
+                            Button buttonOk=dialogView.findViewById(R.id.buttonOk);
+
+                            TextView alert_title = dialogView.findViewById(R.id.alert_title);
+                            TextView alert_description = dialogView.findViewById(R.id.alert_description);
+                            alert_title.setText(title);
+                            alert_description.setText(message_text);
+                            builder.setView(dialogView);
+                            final AlertDialog alertDialog = builder.create();
+                            alertDialog.show();
+                            buttonOk.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    alertDialog.dismiss();
+                                    startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+                                }
+                            });
+
+                            // end alert
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

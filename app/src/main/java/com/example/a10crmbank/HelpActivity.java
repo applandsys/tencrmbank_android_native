@@ -12,8 +12,9 @@ public class HelpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.help);
 
-        findViewById(R.id.back_imageview).setOnClickListener(v -> {
-            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+        findViewById(R.id.back_imageview).setOnClickListener(view ->{
+            super.onBackPressed();
         });
+
     }
 }

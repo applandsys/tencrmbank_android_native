@@ -72,8 +72,9 @@ public class OfferActivity extends AppCompatActivity {
         };
         VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
 
-        findViewById(R.id.setting_back_imagevie).setOnClickListener(v -> {
-            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+
+        findViewById(R.id.back_imageview).setOnClickListener(view ->{
+            super.onBackPressed();
         });
     }
 }

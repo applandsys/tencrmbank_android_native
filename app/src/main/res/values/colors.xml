@@ -12,5 +12,13 @@
     <color name="light_purple">#6E6ECE</color>
     <color name="mud_purple">#63639E</color>
 
+    <color name="colorPrimary">#ff5800</color>
+    <color name="colorPrimaryDark">#ff5800</color>
+    <color name="colorAccent">#ff5800</color>
+    <color name="orange">#FF5C01</color>
+
+    <color name="header">#606060</color>
+
+
 
 </resources>

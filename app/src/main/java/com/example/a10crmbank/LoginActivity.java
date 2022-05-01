@@ -67,11 +67,17 @@ public class LoginActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
 
         home.setOnClickListener(view -> {
-            Toast.makeText(getApplicationContext(), "Register/Login First", Toast.LENGTH_SHORT).show();
+            if(user_id==null && login_id==null){
+                Toast.makeText(getApplicationContext(), "Register/Login First", Toast.LENGTH_SHORT).show();
+            }
         });
 
         settings.setOnClickListener(view -> {
-            startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+            if(user_id==null && login_id==null){
+                Toast.makeText(getApplicationContext(), "Register/Login First", Toast.LENGTH_SHORT).show();
+            }else{
+                startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+            }
         });
 
         offer.setOnClickListener(view -> {
@@ -79,7 +85,11 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         info.setOnClickListener(view -> {
-            startActivity(new Intent(getApplicationContext(), Attention2Activity.class));
+            if(user_id==null && login_id==null){
+                Toast.makeText(getApplicationContext(), "Register/Login First", Toast.LENGTH_SHORT).show();
+            }else{
+                startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+            }
         });
 
         buy_chips = findViewById(R.id.buy_chips);

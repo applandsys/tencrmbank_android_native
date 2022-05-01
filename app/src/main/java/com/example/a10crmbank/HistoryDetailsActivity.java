@@ -13,8 +13,9 @@ public class HistoryDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.history_details);
 
 
-        findViewById(R.id.back_imageview).setOnClickListener(v -> {
-            startActivity(new Intent(getApplicationContext(),HistoryActivity.class));
+        findViewById(R.id.back_imageview).setOnClickListener(view ->{
+            super.onBackPressed();
         });
+
     }
 }

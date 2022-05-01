@@ -28,11 +28,12 @@ public class PaymentMethodActivity extends AppCompatActivity {
         String amount = intent.getStringExtra("amount");
         // BUY TPG
         String player_id = intent.getStringExtra("player_id");
-
+        if(player_id==null){
+            player_id = "0";
+        }
 
         Integer  button_id = view.getId();
         String pay_method="default";
-
 
         if(button_id == R.id.rocket){
             pay_method = "rocket";

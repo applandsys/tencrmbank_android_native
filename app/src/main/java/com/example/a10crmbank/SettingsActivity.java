@@ -38,7 +38,6 @@ public class SettingsActivity extends AppCompatActivity {
         player_id_textview = findViewById(R.id.player_id_textview);
         mobile_number_textview = findViewById(R.id.mobile_number_textview);
         email_textview = findViewById(R.id.email_textview);
-        ImageView setting_back_imagevie= findViewById(R.id.setting_back_imagevie);
 
         Users users = SharedPrefManager.getInstance(getApplicationContext()).getUser();
         String user_id = users.getUser_id();
@@ -85,6 +84,7 @@ public class SettingsActivity extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
                 params.put("action", "account_info");
                 params.put("userid", user_id);
+                params.put("login_id", login_id);
                 return params;
             }
         };
@@ -131,6 +131,7 @@ public class SettingsActivity extends AppCompatActivity {
                     Map<String,String> params = new HashMap<>();
                     params.put("action","logout");
                     params.put("user_id",user_id);
+                    params.put("login_id", login_id);
                     return params;
                 }
             };
@@ -140,6 +141,12 @@ public class SettingsActivity extends AppCompatActivity {
             SharedPrefManager.getInstance(getApplicationContext()).logout();
             startActivity(new Intent(getApplicationContext(),LoginActivity.class));
         });
+
+
+        findViewById(R.id.back_imageview).setOnClickListener(view ->{
+            super.onBackPressed();
+        });
+
 
     }
 }

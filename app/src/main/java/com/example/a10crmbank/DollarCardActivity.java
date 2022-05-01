@@ -88,9 +88,10 @@ public class DollarCardActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        findViewById(R.id.back_imageview).setOnClickListener(v -> {
-            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+        findViewById(R.id.back_imageview).setOnClickListener(view ->{
+            super.onBackPressed();
         });
+
 
 
     }

@@ -84,10 +84,10 @@ public class WithdrawActivity extends AppCompatActivity {
         });
 
 
-        findViewById(R.id.setting_back_imagevie).setOnClickListener(v -> {
-            finish();
-           // startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+        findViewById(R.id.back_imageview).setOnClickListener(view ->{
+            super.onBackPressed();
         });
+
 
 
     }

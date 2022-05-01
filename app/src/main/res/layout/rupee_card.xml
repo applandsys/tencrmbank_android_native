@@ -56,20 +56,23 @@
             android:orientation="vertical"
             android:padding="20dp">
 
+
             <Spinner
                 android:id="@+id/packagespinner"
-                android:layout_height="60dp"
+                android:paddingRight="30dp"
                 android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
+                android:layout_height="60dp"
                 android:background="@drawable/ic_bg_edit_txt"
-                android:drawableRight="@drawable/ic_down_arrow"
-                android:inputType="phone"
+                android:hint="প্লেয়ার আইডি"
+                android:inputType="text"
                 android:paddingStart="12dp"
                 android:paddingEnd="20dp"
+                android:paddingBottom="4dp"
                 android:textAlignment="center"
-                android:paddingTop="16dp"
-                android:spinnerMode="dropdown"
-                />
+                android:textColor="@color/white"
+                >
+
+            </Spinner>
 
             <Button
                 android:id="@+id/submit"

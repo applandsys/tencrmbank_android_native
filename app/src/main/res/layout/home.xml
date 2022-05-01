@@ -121,10 +121,10 @@
                         android:textSize="@dimen/_18sdp" />
 
                     <TextView
-
+                        android:id="@+id/balancepoint_edittext"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Points: 1000"
+                        android:text="Points: 0"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_16sdp" />
 
@@ -132,7 +132,7 @@
                         android:id="@+id/balance_edittext"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Chips: 100Cr"
+                        android:text="Chips: 0Cr"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_16sdp" />
 

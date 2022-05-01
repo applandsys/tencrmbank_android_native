@@ -148,9 +148,10 @@ public class RegisterActivity extends AppCompatActivity {
 
         });
 
-        findViewById(R.id.back_imageview).setOnClickListener(view -> {
-            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+        findViewById(R.id.back_imageview).setOnClickListener(view ->{
+            super.onBackPressed();
         });
+
 
     }
 }

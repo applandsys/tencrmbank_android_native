@@ -21,6 +21,11 @@ public class BuyPointActivity extends AppCompatActivity {
         setContentView(R.layout.buy_points);
         point_amount_edittext= findViewById(R.id.point_amount_edittext);
 
+
+        Users users = SharedPrefManager.getInstance(getApplicationContext()).getUser();
+        String user_id = users.getUser_id();
+        String login_id = users.getLoginid();
+
         findViewById(R.id.btnBuy).setOnClickListener(view -> {
             point_amount = point_amount_edittext.getText().toString().trim();
             if(TextUtils.isEmpty(point_amount)){
@@ -31,11 +36,13 @@ public class BuyPointActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), PaymentMethodActivity.class);
             intent.putExtra("transaction_type","buy_point");
             intent.putExtra("amount",point_amount);
+            intent.putExtra("user_id",user_id);
+            intent.putExtra("login_id",login_id);
             startActivity(intent);
         });
 
-        findViewById(R.id.back_imageview).setOnClickListener(v -> {
-            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+        findViewById(R.id.back_imageview).setOnClickListener(view ->{
+            super.onBackPressed();
         });
 
     }

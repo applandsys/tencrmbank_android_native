@@ -47,6 +47,11 @@ public class IdVipActivity extends AppCompatActivity {
         spinner = findViewById(R.id.packagespinner);
         button = findViewById(R.id.submit);
 
+
+        Users users = SharedPrefManager.getInstance(getApplicationContext()).getUser();
+        String user_id = users.getUser_id();
+        String login_id = users.getLoginid();
+
      //  ArrayList<Dropdown> packages = new ArrayList<Dropdown>();
         ArrayList<String> names = new ArrayList<String>();
 
@@ -83,8 +88,8 @@ public class IdVipActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("action", "login");
-                params.put("version", "1");
+                params.put("request_type", "vip_package");
+                params.put("version", "2");
                 return params;
             }
         };
@@ -100,20 +105,20 @@ public class IdVipActivity extends AppCompatActivity {
                return;
            }
 
-
            Integer ide =spinner.getSelectedItemPosition();
            String selected_item =  ide.toString();
-           Log.d("fuck",selected_item);
 
            Intent intent =  new Intent(getApplicationContext(), PaymentMethodActivity.class);
            intent.putExtra("transaction_type","vip_buy");
-           intent.putExtra("player_id",player_id);
            intent.putExtra("selected_package",selected_item);
+           intent.putExtra("player_id",player_id);
+           intent.putExtra("user_id",user_id);
+           intent.putExtra("login_id",login_id);
            startActivity(intent);
        });
 
-        findViewById(R.id.back_imageview).setOnClickListener(v -> {
-            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+        findViewById(R.id.back_imageview).setOnClickListener(view ->{
+            super.onBackPressed();
         });
 
     }

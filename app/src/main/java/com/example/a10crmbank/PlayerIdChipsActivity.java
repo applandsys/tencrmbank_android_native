@@ -39,13 +39,14 @@ public class PlayerIdChipsActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), PaymentMethodActivity.class);
             intent.putExtra("player_id",player_id);
             intent.putExtra("amount",chips_amount);
-            intent.putExtra("transaction_type","buy_tpg");
+            intent.putExtra("transaction_type","player_id_chips");
             startActivity(intent);
         });
 
-        findViewById(R.id.back_imageview).setOnClickListener(v -> {
-            startActivity(new Intent(getApplicationContext(),BuyChips24hActivity.class));
+        findViewById(R.id.back_imageview).setOnClickListener(view ->{
+            super.onBackPressed();
         });
+
 
     }
 }

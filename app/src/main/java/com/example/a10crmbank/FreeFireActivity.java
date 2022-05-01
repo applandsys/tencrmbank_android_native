@@ -13,8 +13,9 @@ public class FreeFireActivity extends AppCompatActivity {
         setContentView(R.layout.free_fire);
 
 
-        findViewById(R.id.back_imageview).setOnClickListener(v -> {
-            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+        findViewById(R.id.back_imageview).setOnClickListener(view ->{
+            super.onBackPressed();
         });
+
     }
 }

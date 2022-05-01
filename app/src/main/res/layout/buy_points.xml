@@ -36,7 +36,6 @@
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
-
         </RelativeLayout>
 
     </androidx.appcompat.widget.Toolbar>
@@ -88,7 +87,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="48dp"
                 android:background="@drawable/bg_gradient_rec"
-                android:text="চিপস কিনুন"
+                android:text="পয়েন্ট কিনুন"
                 android:textSize="24sp" />
 
         </LinearLayout>

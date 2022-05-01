@@ -24,8 +24,9 @@
             <ImageView
                 android:id="@+id/back_imageview"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_alignParentStart="true"
+                android:layout_marginStart="0dp"
                 android:src="@drawable/ic_arrow_back_24" />
 
             <TextView
@@ -385,7 +386,7 @@
                 android:background="@drawable/bg_gradient_rec"
                 android:drawableLeft="@drawable/ic_arrow_back_24"
                 android:drawablePadding="8dp"
-                android:text="পাসওয়ার্ড পরিবর্তন"
+                android:text="সাইন আউট করুন"
                 android:textSize="18sp"
                 app:elevation="20dp"
                 app:layout_constraintEnd_toEndOf="parent"

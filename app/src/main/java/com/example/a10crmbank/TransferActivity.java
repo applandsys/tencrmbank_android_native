@@ -20,5 +20,10 @@ public class TransferActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), TransferChipsActivity.class));
         });
 
+        findViewById(R.id.back_imageview).setOnClickListener(view ->{
+            super.onBackPressed();
+        });
+
+
     }
 }

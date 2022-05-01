@@ -29,7 +29,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private ImageButton home, settings, offer, info;
     private View buy_point, vip_card, buy_chips, gullak, gift_card, gold_pass, pubg, history;
-    private TextView withdraw, gift, transfer, name_textview, balance_edittext;
+    private TextView withdraw, gift, transfer, name_textview, balance_edittext,balancepoint_edittext;
 
 
     @Override
@@ -43,6 +43,7 @@ public class HomeActivity extends AppCompatActivity {
         info = findViewById(R.id.info);
         name_textview = findViewById(R.id.name_textview);
         balance_edittext =  findViewById(R.id.balance_edittext);
+        balancepoint_edittext =  findViewById(R.id.balancepoint_edittext);
 
         Users users = SharedPrefManager.getInstance(getApplicationContext()).getUser();
         String user_id = users.getUser_id();
@@ -65,9 +66,11 @@ public class HomeActivity extends AppCompatActivity {
                             JSONObject myobj = new JSONObject(rawdata);
 
                             name_textview.setText(myobj.getString("name") );
-                            balance_edittext.setText(obj.getString("balance") + " CR");
+                            balance_edittext.setText("Chips: "+obj.getString("balance") + " CR");
+                            balancepoint_edittext.setText("Point: "+obj.getString("balance_point"));
 
                         } catch (JSONException e) {
+                            Log.d("fuck", e.toString());
                             Toast.makeText(getApplicationContext(),e.toString(),Toast.LENGTH_LONG).show();
                             e.printStackTrace();
                         }
@@ -85,7 +88,8 @@ public class HomeActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("action", "account_info");
-                params.put("userid", user_id);
+                params.put("user_id", user_id);
+                params.put("login_id", login_id);
                 return params;
             }
         };
@@ -142,8 +146,6 @@ public class HomeActivity extends AppCompatActivity {
         setListener(gold_pass, GoldPassActivity.class);
         setListener(pubg, PubgActivity.class);
         setListener(history, HistoryActivity.class);
-
-
 
 
     }

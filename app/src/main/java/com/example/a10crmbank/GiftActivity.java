@@ -72,7 +72,7 @@ public class GiftActivity extends AppCompatActivity {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                    Map<String,String> params = new HashMap<>();
-                   params.put("action","gift_tpg");
+                   params.put("transaction_type","gift_tpg");
                    params.put("userid",user_id);
                    params.put("request","1");
                    params.put("chips",chips_amount);
@@ -86,9 +86,10 @@ public class GiftActivity extends AppCompatActivity {
 
         });
 
-        findViewById(R.id.back_imageview).setOnClickListener(v -> {
-            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+        findViewById(R.id.back_imageview).setOnClickListener(view ->{
+            super.onBackPressed();
         });
+
 
     }
 }

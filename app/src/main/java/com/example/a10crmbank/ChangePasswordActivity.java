@@ -34,6 +34,11 @@ public class ChangePasswordActivity extends AppCompatActivity {
         confirmpass_edittext = findViewById(R.id.confirmpass_edittext);
 
 
+        Users users = SharedPrefManager.getInstance(getApplicationContext()).getUser();
+        String user_id = users.getUser_id();
+        String login_id = users.getLoginid();
+
+
         findViewById(R.id.change_pass_button).setOnClickListener(v ->  {
 
             newpass = newpass_edittext.getText().toString();
@@ -78,6 +83,8 @@ public class ChangePasswordActivity extends AppCompatActivity {
                     params.put("version", "1");
                     params.put("new_password",newpass);
                     params.put("confirm_password",confirmpass);
+                    params.put("user_id",user_id);
+                    params.put("login_id",login_id);
                     return params;
                 }
             };
@@ -88,9 +95,10 @@ public class ChangePasswordActivity extends AppCompatActivity {
         });
 
 
-        findViewById(R.id.back_imageview).setOnClickListener(v -> {
-            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+        findViewById(R.id.back_imageview).setOnClickListener(view ->{
+            super.onBackPressed();
         });
+
 
 
     }

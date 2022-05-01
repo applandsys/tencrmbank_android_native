@@ -34,6 +34,7 @@
     <string name="settings">সেটিংস</string>
     <string name="payment_confirm_txt1">আপনার বিকাশের পারসনাল থেকে 01313954343 নাম্বারে 35 টাকা পেমেন্ট এবং বিকাশের TrxID ট্রানজেকশন আইডি কপি করে পেস্ট করুন।</string>
     <string name="payment_confirm_txt2">Note: বিকাশ/রকেটে পেমেন্ট অথবা সেন্ড মানি করার সময় রেফারেন্সের ঘরে G অথবা GP বসান</string>
+    <string name="otp_confirm_txt">ইমেইলে যে গিয়েছে তা এখানে লিখুন বা কপি পেস্ট করুন</string>
     <string name="helpline_number">হেল্প লাইন: +8809678272727</string>
     <string name="dont_send_money_from_shop">দোকান থেকে টাকা পাঠাবেন না</string>
     <string name="confirm">confirm</string>

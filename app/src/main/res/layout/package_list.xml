@@ -10,10 +10,11 @@
     <TextView
         android:id="@+id/package_item"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="45dp"
         android:paddingTop="10dp"
-        android:paddingBottom="1dp"
-        android:textColor="@color/black"
+        android:paddingBottom="3dp"
+        android:textColor="@color/white"
+        android:background="#2e2d62"
         android:textAlignment="center"
         />
 

@@ -4,7 +4,7 @@ public class URLs {
     private static final String ROOT_URL = "http://khajababa.online/tencrmbank_new/";
     public static final String URL_REGISTER = ROOT_URL + "api/signup";
     public static final String URL_LOGIN= ROOT_URL + "api/login";
-    public static final String ACCOUNT_INFO= ROOT_URL + "api/account";
+
     public static final String LOGOUT= ROOT_URL + "api/logout";
     public static final String OFFER= ROOT_URL + "api/offer";
 
@@ -21,4 +21,6 @@ public class URLs {
     public static final String PUBG_PACKAGE = ROOT_URL + "api/v2/pubg_package";
     public static final String PAYMENT_INSTRUCTION = ROOT_URL + "api/v2/payment_instuction";
     public static final String PAYMENT_CONRIFM = ROOT_URL + "api/v2/payment_confirm";
+    public static final String OTP_CONRIFM = ROOT_URL + "api/v2/otp_confirm";
+    public static final String ACCOUNT_INFO= ROOT_URL + "api/v2/account";
 }
