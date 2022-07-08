@@ -4,10 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
@@ -51,14 +55,45 @@ public class OtpConfirmActivity extends AppCompatActivity {
             }
 
 
-            StringRequest stringRequestConfirm = new StringRequest(Request.Method.POST, URLs.OTP_CONRIFM,
+            StringRequest stringRequestConfirm = new StringRequest(Request.Method.POST, URLs.CARDBUY_CONFIRM,
                     response -> {
-                        Log.d("fuck",response.toString());
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String status = jsonObject.getString("status");
+                            String title = jsonObject.getString("title");
                             String message_text = jsonObject.getString("message");
-                            Log.d("fuck",message_text);
+
+                            if(status.matches("success") || status.matches("failed")){
+                                // alert dialog
+                                final AlertDialog.Builder builder = new AlertDialog.Builder(OtpConfirmActivity.this,R.style.CustomAlertDialog);
+                                ViewGroup viewGroup = findViewById(android.R.id.content);
+                                View dialogView = LayoutInflater.from(OtpConfirmActivity.this).inflate(R.layout.customview, viewGroup, false);
+                                Button buttonOk=dialogView.findViewById(R.id.buttonOk);
+
+                                TextView alert_title = dialogView.findViewById(R.id.alert_title);
+                                TextView alert_description = dialogView.findViewById(R.id.alert_description);
+                                alert_title.setText(title);
+                                alert_description.setText(message_text);
+                                builder.setView(dialogView);
+                                final AlertDialog alertDialog = builder.create();
+                                alertDialog.show();
+                                buttonOk.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        alertDialog.dismiss();
+
+                                        if(user_id!="0"){
+                                            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+                                        }else{
+                                            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                                        }
+
+                                    }
+                                });
+                                // end alert
+
+                            }
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -69,7 +104,7 @@ public class OtpConfirmActivity extends AppCompatActivity {
                         protected Map<String,String> getParams() throws AuthFailureError{
                             Map<String, String> params = new HashMap<>();
                             params.put("user_id",user_id);
-                            params.put("otp_code",otp_code);
+                            params.put("verify_code",otp_code);
                             return params;
                         }
                     };

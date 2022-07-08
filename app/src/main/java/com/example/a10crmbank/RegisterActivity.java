@@ -1,5 +1,6 @@
 package com.example.a10crmbank;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,9 +8,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -43,6 +47,59 @@ public class RegisterActivity extends AppCompatActivity {
         email_edittext =  findViewById(R.id.email_edittext);
         password_edittext = findViewById(R.id.password_edittext);
         againpassword_edittext = findViewById(R.id.againpassword_edittext);
+
+
+        name_edittext.setOnTouchListener( new DrawableClickListener.RightDrawableClickListener(name_edittext)
+        {
+            @Override
+            public boolean onDrawableClick()
+            {
+                showInfo("আপনার নাম", "আপনার নাম লিখুন");
+                return true;
+            }
+        } );
+
+
+        mobile_number_editext.setOnTouchListener( new DrawableClickListener.RightDrawableClickListener(mobile_number_editext)
+        {
+            @Override
+            public boolean onDrawableClick()
+            {
+                showInfo("মোবাইল নম্বর", "মোবাইল নম্বর লিখুন");
+                return true;
+            }
+        } );
+
+        email_edittext.setOnTouchListener( new DrawableClickListener.RightDrawableClickListener(email_edittext)
+        {
+            @Override
+            public boolean onDrawableClick()
+            {
+                showInfo("ইমেইল  আইডি", "ইমেইল আইডি লিখুন");
+                return true;
+            }
+        } );
+
+
+        password_edittext.setOnTouchListener( new DrawableClickListener.RightDrawableClickListener(password_edittext)
+        {
+            @Override
+            public boolean onDrawableClick()
+            {
+                showInfo("গোপন পাসওয়ার্ড", "গোপন পাসওয়ার্ড লিখুন");
+                return true;
+            }
+        } );
+
+        againpassword_edittext.setOnTouchListener( new DrawableClickListener.RightDrawableClickListener(againpassword_edittext)
+        {
+            @Override
+            public boolean onDrawableClick()
+            {
+                showInfo("গোপন পাসওয়ার্ড নিশ্চিত", "গোপন পাসওয়ার্ড টি আবারো লিখুন");
+                return true;
+            }
+        } );
 
         sharedPref = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE) ;
         SharedPreferences.Editor editor = sharedPref.edit();
@@ -152,6 +209,27 @@ public class RegisterActivity extends AppCompatActivity {
             super.onBackPressed();
         });
 
-
     }
+
+    private void showInfo(String title, String description){
+        // TODO : insert code to perform on clicking of the RIGHT drawable image...
+        final AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this,R.style.CustomAlertDialog);
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+        View dialogView = LayoutInflater.from(RegisterActivity.this).inflate(R.layout.customview, viewGroup, false);
+        Button buttonOk = dialogView.findViewById(R.id.buttonOk);
+        TextView alert_title = dialogView.findViewById(R.id.alert_title);
+        TextView alert_description = dialogView.findViewById(R.id.alert_description);
+        alert_title.setText(title);
+        alert_description.setText(description);
+        builder.setView(dialogView);
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+        buttonOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+    }
+
 }

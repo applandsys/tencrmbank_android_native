@@ -2,11 +2,17 @@ package com.example.a10crmbank;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
@@ -25,6 +31,7 @@ public class GiftActivity extends AppCompatActivity {
 
     EditText player_id_edittext, chips_amount_edittext;
     String player_id, chips_amount;
+    String post_login_id, post_user_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,10 +40,40 @@ public class GiftActivity extends AppCompatActivity {
         player_id_edittext = findViewById(R.id.player_id_edittext);
         chips_amount_edittext = findViewById(R.id.chips_amount_edittext);
 
+        chips_amount_edittext.setFilters(new InputFilter[]{ new InputFilterMinMax("1", "50")});
+
+        player_id_edittext.setOnTouchListener( new DrawableClickListener.RightDrawableClickListener(player_id_edittext)
+        {
+            @Override
+            public boolean onDrawableClick()
+            {
+                showInfo("প্লেয়ার আইডি", "প্লেয়ার আইডি ও বুলেট কোড এর ফরমেট দিয়ে দিন");
+                return true;
+            }
+        } );
+
+        chips_amount_edittext.setOnTouchListener( new DrawableClickListener.RightDrawableClickListener(chips_amount_edittext)
+        {
+            @Override
+            public boolean onDrawableClick()
+            {
+                showInfo("5-50CR ", "এক সাথে 1-50CR এর বেশি কিনা যাবে না।");
+                return true;
+            }
+        } );
+
 
         Users users = SharedPrefManager.getInstance(getApplicationContext()).getUser();
         String user_id = users.getUser_id();
         String login_id = users.getLoginid();
+
+        if(login_id == null || login_id.isEmpty()){
+            post_login_id="0";
+        }
+
+        if(user_id == null || user_id.isEmpty()){
+            post_user_id="0";
+        }
 
         findViewById(R.id.gift).setOnClickListener(view -> {
             player_id = player_id_edittext.getText().toString().trim();
@@ -45,6 +82,16 @@ public class GiftActivity extends AppCompatActivity {
                 player_id_edittext.setError("Please enter player id");
                 player_id_edittext.requestFocus();
             }
+
+            String regexString = "[A-Za-z]{4}[0-9]{3}|100+[0-9]{5,12}";
+
+            if(!player_id.trim().matches(regexString))
+            {
+                player_id_edittext.setError("Please enter correct format");
+                player_id_edittext.requestFocus();
+            }
+
+
             if(TextUtils.isEmpty(chips_amount)){
                 chips_amount_edittext.setError("Pleasse enter amount");
                 chips_amount_edittext.requestFocus();
@@ -73,11 +120,11 @@ public class GiftActivity extends AppCompatActivity {
                 protected Map<String, String> getParams() throws AuthFailureError {
                    Map<String,String> params = new HashMap<>();
                    params.put("transaction_type","gift_tpg");
-                   params.put("userid",user_id);
+                   params.put("userid",post_user_id);
+                   params.put("loginid",post_login_id);
                    params.put("request","1");
                    params.put("chips",chips_amount);
                    params.put("playerid",player_id);
-                   params.put("loginid",login_id);
                    return params;
                 }
             };
@@ -89,7 +136,26 @@ public class GiftActivity extends AppCompatActivity {
         findViewById(R.id.back_imageview).setOnClickListener(view ->{
             super.onBackPressed();
         });
-
-
     }
+
+    private void showInfo(String title, String description){
+        final AlertDialog.Builder builder = new AlertDialog.Builder(GiftActivity.this,R.style.CustomAlertDialog);
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+        View dialogView = LayoutInflater.from(GiftActivity.this).inflate(R.layout.customview, viewGroup, false);
+        Button buttonOk = dialogView.findViewById(R.id.buttonOk);
+        TextView alert_title = dialogView.findViewById(R.id.alert_title);
+        TextView alert_description = dialogView.findViewById(R.id.alert_description);
+        alert_title.setText(title);
+        alert_description.setText(description);
+        builder.setView(dialogView);
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+        buttonOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+    }
+
 }

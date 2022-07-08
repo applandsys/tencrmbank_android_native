@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class PaymentMethodActivity extends AppCompatActivity {
 
+    Button point_button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,6 +19,23 @@ public class PaymentMethodActivity extends AppCompatActivity {
         findViewById(R.id.back_imageview).setOnClickListener(View ->{
             super.onBackPressed();
         });
+
+        Users users = SharedPrefManager.getInstance(getApplicationContext()).getUser();
+        String user_id = users.getUser_id();
+        String login_id = users.getLoginid();
+
+        point_button =  findViewById(R.id.point);
+
+        if(user_id==null || login_id==null){
+            point_button.setVisibility(View.GONE);
+        }
+
+        Intent intent = getIntent();
+        String transaction_type = intent.getStringExtra("transaction_type");
+
+        if(transaction_type.matches("buy_point")){
+            point_button.setVisibility(View.GONE);
+        }
 
     }
 
@@ -38,11 +57,13 @@ public class PaymentMethodActivity extends AppCompatActivity {
         if(button_id == R.id.rocket){
             pay_method = "rocket";
         }else if(button_id == R.id.bkash){
-            pay_method = "bkash";
+            pay_method = "bKash";
         }else if(button_id == R.id.nagad){
             pay_method = "nagad";
         }else if(button_id == R.id.point){
             pay_method = "point";
+        }else if(button_id == R.id.upay){
+            pay_method = "upay";
         }
 
         Intent pintent = new Intent(getApplicationContext(), PaymentConfirmActivity.class);

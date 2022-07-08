@@ -2,11 +2,16 @@ package com.example.a10crmbank;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
@@ -28,13 +33,24 @@ public class WithdrawActivity extends AppCompatActivity {
     String withdraw_input_value;
     TextView alert_text;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.withdraw);
         withdraw_input_edittext = findViewById(R.id.withdraw_input_edittext);
         alert_text =  findViewById(R.id.alert_text);
+
+        withdraw_input_edittext.setFilters(new InputFilter[]{ new InputFilterMinMax("1", "50")});
+
+        withdraw_input_edittext.setOnTouchListener( new DrawableClickListener.RightDrawableClickListener(withdraw_input_edittext)
+        {
+            @Override
+            public boolean onDrawableClick()
+            {
+                showInfo("5-50CR ", "এক সাথে 1-50CR এর বেশি কিনা যাবে না।");
+                return true;
+            }
+        } );
 
         Users users = SharedPrefManager.getInstance(getApplicationContext()).getUser();
         String user_id = users.getUser_id();
@@ -88,7 +104,26 @@ public class WithdrawActivity extends AppCompatActivity {
             super.onBackPressed();
         });
 
-
-
     }
+
+    private void showInfo(String title, String description){
+        final AlertDialog.Builder builder = new AlertDialog.Builder(WithdrawActivity.this,R.style.CustomAlertDialog);
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+        View dialogView = LayoutInflater.from(WithdrawActivity.this).inflate(R.layout.customview, viewGroup, false);
+        Button buttonOk = dialogView.findViewById(R.id.buttonOk);
+        TextView alert_title = dialogView.findViewById(R.id.alert_title);
+        TextView alert_description = dialogView.findViewById(R.id.alert_description);
+        alert_title.setText(title);
+        alert_description.setText(description);
+        builder.setView(dialogView);
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+        buttonOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+    }
+
 }

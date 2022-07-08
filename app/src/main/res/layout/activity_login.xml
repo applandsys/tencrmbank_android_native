@@ -110,9 +110,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_44sdp"
                         android:background="@drawable/ic_bg_edit_txt"
-                        android:drawableEnd="@drawable/ic_baseline_info_24"
+                        android:drawableRight="@drawable/ic_baseline_info_24"
                         android:hint="@string/mobile_number"
-                        android:inputType="phone"
+                        android:inputType="text"
                         android:paddingStart="12dp"
                         android:paddingEnd="20dp"
                         android:paddingBottom="4dp"
@@ -126,7 +126,7 @@
                         android:layout_height="@dimen/_44sdp"
                         android:layout_marginTop="12dp"
                         android:background="@drawable/ic_bg_edit_txt"
-                        android:drawableEnd="@drawable/ic_baseline_info_24"
+                        android:drawableRight="@drawable/ic_baseline_info_24"
                         android:hint="@string/password"
                         android:inputType="textPassword"
                         android:paddingStart="12dp"
@@ -135,6 +135,8 @@
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textColorHint="@color/white" />
+
+
 
                     <Button
                         android:id="@+id/btn_login"
@@ -147,6 +149,17 @@
                         android:drawablePadding="8dp"
                         android:text="@string/login"
                         android:textSize="@dimen/_18sdp" />
+                    <TextView
+                        android:id="@+id/password_reset_edittext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="15dp"
+                        android:padding="8dp"
+                        android:text="@string/password_reset"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12sdp" />
 
                     <TextView
                         android:id="@+id/txy_register"
@@ -212,7 +225,6 @@
 
                     <!--vip-card-->
                     <LinearLayout
-                        android:id="@+id/vip_card"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginEnd="1dp"
@@ -222,27 +234,32 @@
                         android:orientation="vertical"
                         tools:targetApi="m">
 
-                        <ImageView
+                        <LinearLayout
+                            android:id="@+id/vip_card"
                             android:layout_width="match_parent"
-                            android:layout_height="84dp"
-                            android:layout_marginTop="4dp"
-                            android:background="@color/deep_purple"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/vip_icon" />
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="84dp"
+                                android:layout_marginTop="4dp"
+                                android:background="@color/deep_purple"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/vip_icon" />
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="20dp"
-                            android:layout_marginBottom="4dp"
-                            android:text="@string/vip"
-                            android:textAlignment="center"
-                            android:textColor="@color/white" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="20dp"
+                                android:layout_marginBottom="4dp"
+                                android:text="@string/vip"
+                                android:textAlignment="center"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
 
                     </LinearLayout>
 
                     <!--gullak-->
                     <LinearLayout
-                        android:id="@+id/gullak"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginEnd="1dp"
@@ -251,28 +268,33 @@
                         android:foreground="?attr/selectableItemBackgroundBorderless"
                         android:orientation="vertical">
 
-                        <ImageView
+                        <LinearLayout
+                            android:id="@+id/gullak"
                             android:layout_width="match_parent"
-                            android:layout_height="84dp"
-                            android:layout_marginTop="4dp"
-                            android:background="@color/deep_purple"
-                            android:paddingLeft="8dp"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/gullak" />
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="84dp"
+                                android:layout_marginTop="4dp"
+                                android:background="@color/deep_purple"
+                                android:paddingLeft="8dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/gullak" />
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="20dp"
-                            android:layout_marginBottom="4dp"
-                            android:text="@string/gullak"
-                            android:textAlignment="center"
-                            android:textColor="@color/white" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="20dp"
+                                android:layout_marginBottom="4dp"
+                                android:text="@string/gullak"
+                                android:textAlignment="center"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
 
                     </LinearLayout>
 
                     <!--gold pass-->
                     <LinearLayout
-                        android:id="@+id/gold_pass"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -280,22 +302,30 @@
                         android:foreground="?attr/selectableItemBackgroundBorderless"
                         android:orientation="vertical">
 
-                        <ImageView
+                        <LinearLayout
+                            android:id="@+id/gold_pass"
                             android:layout_width="match_parent"
-                            android:layout_height="84dp"
-                            android:layout_marginTop="4dp"
-                            android:background="@color/deep_purple"
-                            android:paddingRight="18dp"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/gold_pass" />
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="84dp"
+                                android:layout_marginTop="4dp"
+                                android:background="@color/deep_purple"
+                                android:paddingRight="18dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/gold_pass" />
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="20dp"
-                            android:layout_marginBottom="4dp"
-                            android:text="@string/gold_pass"
-                            android:textAlignment="center"
-                            android:textColor="@color/white" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="20dp"
+                                android:layout_marginBottom="4dp"
+                                android:text="@string/gold_pass"
+                                android:textAlignment="center"
+                                android:textColor="@color/white" />
+
+                        </LinearLayout>
+
 
                     </LinearLayout>
 
@@ -311,7 +341,6 @@
 
                     <!--gift-card-->
                     <LinearLayout
-                        android:id="@+id/gift_card"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginTop="1dp"
@@ -321,28 +350,38 @@
                         android:foreground="?attr/selectableItemBackgroundBorderless"
                         android:orientation="vertical">
 
-                        <ImageView
+                        <LinearLayout
+                            android:id="@+id/gift_card"
                             android:layout_width="match_parent"
-                            android:layout_height="84dp"
-                            android:layout_marginTop="4dp"
-                            android:background="@color/deep_purple"
-                            android:padding="12dp"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/ic_google_play" />
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="20dp"
-                            android:layout_marginBottom="4dp"
-                            android:text="@string/gift_card"
-                            android:textAlignment="center"
-                            android:textColor="@color/white" />
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="84dp"
+                                android:layout_marginTop="4dp"
+                                android:background="@color/deep_purple"
+                                android:padding="12dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/ic_google_play" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="20dp"
+                                android:layout_marginBottom="4dp"
+                                android:text="@string/gift_card"
+                                android:textAlignment="center"
+                                android:textColor="@color/white" />
+
+                        </LinearLayout>
+
+
 
                     </LinearLayout>
 
                     <!--free-fire-->
                     <LinearLayout
-                        android:id="@+id/free_fire"
+
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginTop="1dp"
@@ -352,28 +391,33 @@
                         android:foreground="?attr/selectableItemBackgroundBorderless"
                         android:orientation="vertical">
 
-                        <ImageView
+                        <LinearLayout
+                            android:id="@+id/free_fire"
                             android:layout_width="match_parent"
-                            android:layout_height="84dp"
-                            android:layout_marginTop="4dp"
-                            android:background="@color/deep_purple"
-                            android:padding="4dp"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/diamond" />
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="84dp"
+                                android:layout_marginTop="4dp"
+                                android:background="@color/deep_purple"
+                                android:padding="4dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/diamond" />
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="20dp"
-                            android:layout_marginBottom="4dp"
-                            android:text="@string/free_fire"
-                            android:textAlignment="center"
-                            android:textColor="@color/white" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="20dp"
+                                android:layout_marginBottom="4dp"
+                                android:text="@string/free_fire"
+                                android:textAlignment="center"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
 
                     </LinearLayout>
 
                     <!--pubg-->
                     <LinearLayout
-                        android:id="@+id/pubg"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginTop="1dp"
@@ -381,27 +425,31 @@
                         android:background="@color/deep_purple"
                         android:foreground="?attr/selectableItemBackgroundBorderless"
                         android:orientation="vertical">
-
-                        <ImageView
+                        <LinearLayout
+                            android:id="@+id/pubg"
                             android:layout_width="match_parent"
-                            android:layout_height="84dp"
-                            android:layout_marginTop="4dp"
-                            android:background="@color/deep_purple"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/uc_icon" />
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="84dp"
+                                android:layout_marginTop="4dp"
+                                android:background="@color/deep_purple"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/uc_icon" />
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="20dp"
-                            android:layout_marginBottom="4dp"
-                            android:text="@string/pubg"
-                            android:textAlignment="center"
-                            android:textColor="@color/white" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="20dp"
+                                android:layout_marginBottom="4dp"
+                                android:text="@string/pubg"
+                                android:textAlignment="center"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
 
                     </LinearLayout>
 
                 </LinearLayout>
-
 
             </LinearLayout>
 

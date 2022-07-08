@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -26,7 +27,7 @@ import java.util.Map;
 public class SettingsActivity extends AppCompatActivity {
 
     TextView name_textview, account_type, mbankid_textview,player_id_textview,mobile_number_textview,email_textview;
-
+    String name_text,player_id_text;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +49,6 @@ public class SettingsActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
                         try {
                             //converting response to json object
                             JSONObject obj = new JSONObject(response);
@@ -57,11 +57,26 @@ public class SettingsActivity extends AppCompatActivity {
                             String rawdata = userJson.getString(0);
                             JSONObject myobj = new JSONObject(rawdata);
 
+                            name_text = myobj.getString("name");
+                            player_id_text = myobj.getString("playerid");
 
-                            name_textview.setText(myobj.getString("name") );
-                            account_type.setText(myobj.getString("account_type") );
+                            if(player_id_text==null || player_id_text==""){
+
+                                findViewById(R.id.player_id_textview).setOnClickListener(view -> {
+                                    startActivity(new Intent(getApplicationContext(), SetPlayeridActivity.class));
+                                });
+                            }
+
+                            if(name_text.equals(null)||name_text.equals("")){
+                                findViewById(R.id.name_textview).setOnClickListener(view -> {
+                                    startActivity(new Intent(getApplicationContext(), SetNameActivity.class));
+                                });
+                            }
+
+                            name_textview.setText(name_text);
+                            account_type.setText(myobj.getString("player_type") );
                             mbankid_textview.setText(myobj.getString("company_id") );
-                            player_id_textview.setText(myobj.getString("playerid") );
+                            player_id_textview.setText(player_id_text);
                             mobile_number_textview.setText(myobj.getString("phone") );
                             email_textview.setText(myobj.getString("email") );
 
@@ -83,7 +98,7 @@ public class SettingsActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("action", "account_info");
-                params.put("userid", user_id);
+                params.put("user_id", user_id);
                 params.put("login_id", login_id);
                 return params;
             }
@@ -101,9 +116,6 @@ public class SettingsActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), ChangePasswordActivity.class));
         });
 
-        findViewById(R.id.player_id_textview).setOnClickListener(view -> {
-            Toast.makeText(this,"Please set your player id",Toast.LENGTH_LONG).show();
-        });
 
         findViewById(R.id.back_imageview).setOnClickListener(v -> {
             startActivity(new Intent(getApplicationContext(),HomeActivity.class));

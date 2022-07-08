@@ -2,6 +2,7 @@ package com.example.a10crmbank;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,12 +22,32 @@ public class HistoryActivity extends AppCompatActivity {
             super.onBackPressed();
         });
 
-
-
     }
 
     public void startHistory(View view) {
-        startActivity(new Intent(this, HistoryDetailsActivity.class));
+
+        Intent intent = new Intent(getApplicationContext(), HistoryDetailsActivity.class);
+
+        if(view.getId()==R.id.tpg_ll){
+            intent.putExtra("transaction_type","tpg");
+        }
+        else if(view.getId()==R.id.gullakbreak){
+            intent.putExtra("transaction_type","gullakbreak");
+        }
+        else if(view.getId()==R.id.gold_pass){
+            intent.putExtra("transaction_type","gold_pass");
+        }
+        else if(view.getId()==R.id.playcard){
+            intent.putExtra("transaction_type","playcard");
+        }
+        else if(view.getId()==R.id.point){
+            intent.putExtra("transaction_type","point");
+        }
+        else if(view.getId()==R.id.vip){
+            intent.putExtra("transaction_type","vip");
+        }
+
+        startActivity(intent);
     }
 
 

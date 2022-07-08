@@ -82,6 +82,7 @@
 
             <!--vip-card-->
             <LinearLayout
+                android:id="@+id/tpg_ll"
                 android:layout_width="0dp"
                 android:layout_height="124dp"
                 android:layout_marginEnd="1dp"
@@ -111,6 +112,7 @@
 
             <!--gullak-->
             <LinearLayout
+                android:id="@+id/gullakbreak"
                 android:layout_width="0dp"
                 android:layout_height="124dp"
                 android:layout_marginEnd="1dp"
@@ -140,6 +142,7 @@
 
             <!--gold pass-->
             <LinearLayout
+                android:id="@+id/gold_pass"
                 android:layout_width="0dp"
                 android:layout_height="124dp"
                 android:layout_weight="1"
@@ -170,6 +173,7 @@
 
         <!--column two-->
         <LinearLayout
+            android:id="@+id/playcard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
@@ -208,6 +212,7 @@
 
             <!--point-->
             <LinearLayout
+                android:id="@+id/point"
                 android:layout_width="0dp"
                 android:layout_height="124dp"
                 android:layout_marginTop="1dp"
@@ -238,6 +243,7 @@
 
             <!--vip-card-->
             <LinearLayout
+                android:id="@+id/vip"
                 android:layout_width="0dp"
                 android:layout_height="124dp"
                 android:layout_marginTop="1dp"
@@ -265,7 +271,6 @@
             </LinearLayout>
 
         </LinearLayout>
-
 
         <!--bottom separator-->
         <View

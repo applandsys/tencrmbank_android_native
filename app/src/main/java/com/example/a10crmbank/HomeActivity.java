@@ -30,7 +30,7 @@ public class HomeActivity extends AppCompatActivity {
     private ImageButton home, settings, offer, info;
     private View buy_point, vip_card, buy_chips, gullak, gift_card, gold_pass, pubg, history;
     private TextView withdraw, gift, transfer, name_textview, balance_edittext,balancepoint_edittext;
-
+    Boolean isLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,10 @@ public class HomeActivity extends AppCompatActivity {
         String user_id = users.getUser_id();
         String login_id = users.getLoginid();
 
+        if(login_id == null || login_id.isEmpty()){
+            Toast.makeText(getApplicationContext(),"Please Login",Toast.LENGTH_LONG).show();
+            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+        }
 
         // Get Home page data from server
         //if everything is fine
@@ -100,7 +104,8 @@ public class HomeActivity extends AppCompatActivity {
         // Get Home Page data fromm server
 
         home.setOnClickListener(view -> {
-            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+            Toast.makeText(getApplicationContext(),"You are in your Panel Dashboard",Toast.LENGTH_LONG).show();
+          //  startActivity(new Intent(getApplicationContext(), HomeActivity.class));
         });
 
         settings.setOnClickListener(view -> {

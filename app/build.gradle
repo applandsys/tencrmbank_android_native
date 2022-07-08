@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.a10crmbank"
         minSdk 21
-        targetSdk 29
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -32,6 +32,15 @@ android {
             }
         }
     }
+
+        lintOptions {
+            checkReleaseBuilds false
+            // Or, if you prefer, you can continue to check for errors in release builds,
+            // but continue the build even when errors are found:
+            abortOnError false
+        }
+
+
 }
 
 dependencies {
@@ -45,7 +54,6 @@ dependencies {
 
     //circle imageView
     implementation 'de.hdodenhof:circleimageview:3.1.0'
-
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     implementation 'com.android.volley:volley:1.2.1'
     implementation 'com.google.code.gson:gson:2.8.6'

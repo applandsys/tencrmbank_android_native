@@ -108,6 +108,22 @@
                 app:elevation="20dp" />
 
             <Button
+                android:id="@+id/upay"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/bg_gradient_rec"
+                android:drawableLeft="@drawable/upay_logo_small"
+                android:drawablePadding="8dp"
+                android:onClick="paymentMethod"
+                android:text="উপায়"
+                android:textSize="24sp"
+                app:elevation="20dp" />
+
+            <Button
                 android:id="@+id/point"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"

@@ -77,6 +77,24 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".OtpConfirmActivity"
+            android:exported="true" />
+        <activity
+            android:name=".OtpResetpassActivity"
+            android:exported="true" />
+        <activity
+            android:name=".OtpMultiloginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SetNameActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SetPlayeridActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ResetpassActivity"
+            android:exported="true" />
+        <activity
             android:name=".OfferActivity"
             android:exported="true" />
         <activity
@@ -118,7 +136,9 @@
         <activity
             android:name=".WithdrawActivity"
             android:exported="true" />
-
+        <activity
+            android:name=".DeliveryActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

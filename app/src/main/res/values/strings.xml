@@ -1,8 +1,10 @@
 <resources>
-    <string name="app_name">MBank</string>
+    <string name="app_name">TenCrmBank</string>
     <string name="mobile_number">মোবাইল নাম্বার</string>
     <string name="password">পাসওয়ার্ড</string>
     <string name="login">লগইন</string>
+    <string name="password_reset">পাসওয়ার্ড রিসিট করুন।</string>
+    <string name="resetpass_txt">প্লেয়ার আইডি / মোবাইল নম্বর দিন।</string>
     <string name="no_account_register">অ্যাকাউন্ট নেই? রেজিস্ট্রেশন করুন।</string>
     <string name="buy_chips">চিপস কিনুন</string>
     <string name="buy_poins">পয়েন্ট কিনুন</string>
@@ -32,12 +34,14 @@
     <string name="buy_point_text_2">* পয়েন্ট দিয়ে চিপস গুল্লাক/গোল্ড পাস সহ সকল প্রোডাক্ট ক্রয় করা যাবে।</string>
     <string name="payment_method">পেমেন্ট মেথড</string>
     <string name="settings">সেটিংস</string>
-    <string name="payment_confirm_txt1">আপনার বিকাশের পারসনাল থেকে 01313954343 নাম্বারে 35 টাকা পেমেন্ট এবং বিকাশের TrxID ট্রানজেকশন আইডি কপি করে পেস্ট করুন।</string>
+    <string name="payment_confirm_txt1">এডমিনের সাথে যোগাযোগ করুন</string>
     <string name="payment_confirm_txt2">Note: বিকাশ/রকেটে পেমেন্ট অথবা সেন্ড মানি করার সময় রেফারেন্সের ঘরে G অথবা GP বসান</string>
     <string name="otp_confirm_txt">ইমেইলে যে গিয়েছে তা এখানে লিখুন বা কপি পেস্ট করুন</string>
+    <string name="newspass_confirm_txt">নতুন পাসওয়ার্ড দিন</string>
     <string name="helpline_number">হেল্প লাইন: +8809678272727</string>
     <string name="dont_send_money_from_shop">দোকান থেকে টাকা পাঠাবেন না</string>
     <string name="confirm">confirm</string>
+    <string name="send">Send</string>
 
 
 </resources>

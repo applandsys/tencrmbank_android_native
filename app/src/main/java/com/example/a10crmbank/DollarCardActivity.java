@@ -2,10 +2,13 @@ package com.example.a10crmbank;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,11 +29,17 @@ import java.util.Map;
 
 public class DollarCardActivity extends AppCompatActivity {
     Spinner spinner;
-    Button button;
+    Button button,search;
+    EditText player_id_edittext, trxid_edittext;
+    TextView card_info;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dollar_card);
+        player_id_edittext = findViewById(R.id.player_id_edittext);
+        trxid_edittext = findViewById(R.id.trxid_edittext);
+        card_info= findViewById(R.id.card_info);
+        search = findViewById(R.id.search);
         spinner = findViewById(R.id.packagespinner);
         button = findViewById(R.id.submit);
         ArrayList<String> names = new ArrayList<String>();
@@ -39,7 +48,6 @@ public class DollarCardActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
                         try {
                             JSONArray arr = new JSONArray(response);
                             for(int i=0; i< arr.length();i++){
@@ -82,10 +90,53 @@ public class DollarCardActivity extends AppCompatActivity {
             Integer ide =spinner.getSelectedItemPosition();
             String selected_item =  ide.toString();
 
+            String player_id = player_id_edittext.getText().toString();
+
+            if(TextUtils.isEmpty(player_id)){
+                player_id_edittext.setError("Please Enter Email ID");
+                player_id_edittext.requestFocus();
+                return;
+            }
+
+            String regexString = "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}";
+
+            if(!player_id.trim().matches(regexString))
+            {
+                player_id_edittext.setError("Please enter correct format");
+                player_id_edittext.requestFocus();
+                return;
+            }
+
             Intent intent =  new Intent(getApplicationContext(), PaymentMethodActivity.class);
             intent.putExtra("transaction_type","dollar_card");
             intent.putExtra("selected_package",selected_item);
+            intent.putExtra("player_id",player_id);
             startActivity(intent);
+        });
+
+        search.setOnClickListener(view -> {
+            String trxid = trxid_edittext.getText().toString();
+            StringRequest stringRequest1 = new StringRequest(Request.Method.POST,URLs.SEARCH_CARD,
+                    response -> {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            card_info.setText("apner card hoilo");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    },error -> {
+                        Log.d("fuck",error.toString());
+            })
+            {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<>();
+                    params.put("trxid", trxid);
+                    params.put("version", "2");
+                    return params;
+                }
+            };
+            VolleySingleton.getInstance(this).addToRequestQueue(stringRequest1);
         });
 
         findViewById(R.id.back_imageview).setOnClickListener(view ->{

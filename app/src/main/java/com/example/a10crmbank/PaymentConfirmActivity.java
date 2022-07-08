@@ -45,14 +45,16 @@ public class PaymentConfirmActivity extends AppCompatActivity {
         notice =  findViewById(R.id.notice);
         note =  findViewById(R.id.note);
 
+        login_id = "0" ;
+        user_id = "0";
 
-        Users users = SharedPrefManager.getInstance(getApplicationContext()).getUser();
-        user_id = users.getUser_id();
-        login_id = users.getLoginid();
-
-        if(user_id==null){
-            user_id= "0";
+        boolean isloggined = SharedPrefManager.getInstance(getApplicationContext()).isLoggedIn();
+        if(isloggined){
+            Users users = SharedPrefManager.getInstance(getApplicationContext()).getUser();
+            user_id = users.getUser_id();
+            login_id = users.getLoginid();
         }
+
 
         Intent intent = getIntent();
 
@@ -67,12 +69,25 @@ public class PaymentConfirmActivity extends AppCompatActivity {
 
          transaction_type = intent.getStringExtra("transaction_type");
          method = intent.getStringExtra("method");
-         selected_package = intent.getStringExtra("selected_package");
-        if(selected_package==null){
-            selected_package = "0";
+
+         if(method=="nagad"){
+             trx_id_edittext.setHint("Nagad TxnID");
+         }
+
+        if(method=="rocket"){
+            trx_id_edittext.setHint("Rocekt TrxID");
         }
 
-        Log.d("fuck",selected_package);
+        if(method=="upay"){
+            trx_id_edittext.setHint("Upay TrxID");
+        }
+
+         selected_package = intent.getStringExtra("selected_package");
+
+         if(selected_package==null || selected_package.equals("0")){
+            selected_package = "1";
+         }
+
          player_id = intent.getStringExtra("player_id");
         if(player_id==null){
             player_id = "0";
@@ -80,6 +95,8 @@ public class PaymentConfirmActivity extends AppCompatActivity {
 
         StringRequest stringRequest1 = new StringRequest(Request.Method.POST,URLs.PAYMENT_INSTRUCTION,
                     response -> {
+
+                    // Log.d("fuck",transaction_type+":"+response.toString());
 
                         try {
                             JSONObject jsonObject = new JSONObject(response);
@@ -93,25 +110,24 @@ public class PaymentConfirmActivity extends AppCompatActivity {
                             note.setText(note_text);
 
                         } catch (JSONException e) {
-                            Log.d("fuck","Error possibility try block");
+                            Log.d("fuck",e.toString());
                             e.printStackTrace();
                         }
                     },
                     error -> {
-                        Log.d("fuck","Error possibility response blokc");
+                       // Log.d("fuck",transaction_type+":"+error.toString());
                     }
                 ){
                     protected Map<String,String> getParams() throws AuthFailureError{
                         Map<String,String> params = new HashMap<>();
                         params.put("mbank_id",mbank_id);
-                        params.put("user_id",user_id);
                         params.put("amount",amount);
                         params.put("transaction_type",transaction_type);
                         params.put("method",method);
                         params.put("selected_package",selected_package);
                         params.put("player_id",player_id);
-                        params.put("user_id",user_id);
-                        params.put("login_id",login_id);
+                        params.put("userid",user_id);
+                        params.put("loginid",login_id);
                         return params;
                     }
                  };
@@ -120,7 +136,6 @@ public class PaymentConfirmActivity extends AppCompatActivity {
 
 
         findViewById(R.id.confirm_button).setOnClickListener((View v) -> {
-
             trx_id = trx_id_edittext.getText().toString();
             if(TextUtils.isEmpty(trx_id)){
                 trx_id_edittext.setError("Plese input TrxId");
@@ -128,66 +143,93 @@ public class PaymentConfirmActivity extends AppCompatActivity {
                 return;
             }
 
-            StringRequest stringRequestConfirm = new StringRequest(Request.Method.POST, URLs.PAYMENT_CONRIFM,
+            StringRequest buyconfirmStringRequest = new StringRequest(Request.Method.POST,URLs.PAYMENT_CONRIFM,
                     response -> {
-
+                           Log.d("fuck",transaction_type +":"+response.toString());
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String status = jsonObject.getString("status");
                             String title = jsonObject.getString("title");
                             String message_text = jsonObject.getString("message");
 
-                            if(transaction_type=="rupi_card"){
-                                startActivity(new Intent(getApplicationContext(),OtpConfirmActivity.class));
-                            }else if(transaction_type=="dollar_card"){
-                                startActivity(new Intent(getApplicationContext(),OtpConfirmActivity.class));
+                            if(transaction_type.matches("rupi_card") || transaction_type.matches("dollar_card") || transaction_type.matches("freefire_uc")){
+                                // alert dialog
+                                final AlertDialog.Builder builder = new AlertDialog.Builder(PaymentConfirmActivity.this,R.style.CustomAlertDialog);
+                                ViewGroup viewGroup = findViewById(android.R.id.content);
+                                View dialogView = LayoutInflater.from(PaymentConfirmActivity.this).inflate(R.layout.customview, viewGroup, false);
+                                Button buttonOk=dialogView.findViewById(R.id.buttonOk);
+
+                                TextView alert_title = dialogView.findViewById(R.id.alert_title);
+                                TextView alert_description = dialogView.findViewById(R.id.alert_description);
+                                alert_title.setText(title);
+                                alert_description.setText(message_text);
+                                builder.setView(dialogView);
+                                final AlertDialog alertDialog = builder.create();
+                                alertDialog.show();
+                                buttonOk.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        alertDialog.dismiss();
+                                        if(status.matches("success")){
+                                            Intent intent1 = new Intent(getApplicationContext(),DeliveryActivity.class);
+                                            intent1.putExtra("trxid",trx_id);
+                                            intent1.putExtra("transaction_type",transaction_type);
+                                            startActivity(intent1);
+                                        }
+                                    }
+                                });
+                                // end alert
+                            }else{
+                                // alert dialog
+                                final AlertDialog.Builder builder = new AlertDialog.Builder(PaymentConfirmActivity.this,R.style.CustomAlertDialog);
+                                ViewGroup viewGroup = findViewById(android.R.id.content);
+                                View dialogView = LayoutInflater.from(PaymentConfirmActivity.this).inflate(R.layout.customview, viewGroup, false);
+                                Button buttonOk=dialogView.findViewById(R.id.buttonOk);
+
+                                TextView alert_title = dialogView.findViewById(R.id.alert_title);
+                                TextView alert_description = dialogView.findViewById(R.id.alert_description);
+                                alert_title.setText(title);
+                                alert_description.setText(message_text);
+                                builder.setView(dialogView);
+                                final AlertDialog alertDialog = builder.create();
+                                alertDialog.show();
+                                buttonOk.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        alertDialog.dismiss();
+                                        if(isloggined){
+                                            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+                                        }else{
+                                            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                                        }
+                                    }
+                                });
+                                // end alert
                             }
-
-                            // alert dialog
-                            final AlertDialog.Builder builder = new AlertDialog.Builder(PaymentConfirmActivity.this,R.style.CustomAlertDialog);
-                            ViewGroup viewGroup = findViewById(android.R.id.content);
-                            View dialogView = LayoutInflater.from(PaymentConfirmActivity.this).inflate(R.layout.customview, viewGroup, false);
-                            Button buttonOk=dialogView.findViewById(R.id.buttonOk);
-
-                            TextView alert_title = dialogView.findViewById(R.id.alert_title);
-                            TextView alert_description = dialogView.findViewById(R.id.alert_description);
-                            alert_title.setText(title);
-                            alert_description.setText(message_text);
-                            builder.setView(dialogView);
-                            final AlertDialog alertDialog = builder.create();
-                            alertDialog.show();
-                            buttonOk.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    alertDialog.dismiss();
-                                    startActivity(new Intent(getApplicationContext(),HomeActivity.class));
-                                }
-                            });
-
-                            // end alert
-
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            Log.d("fuck","Catch hoise"+transaction_type+e.toString());
                         }
-                    },
-                    error -> {
-                        Log.d("fuck",error.toString());
-                    }){
-                        protected Map<String,String> getParams() throws AuthFailureError{
-                            Map<String, String> params = new HashMap<>();
-                            params.put("trx_id",trx_id);
-                            params.put("user_id",user_id);
-                            params.put("mbank_id",mbank_id);
-                            params.put("amount",amount);
-                            params.put("transaction_type",transaction_type);
-                            params.put("method",method);
-                            params.put("selected_package",selected_package);
-                            params.put("player_id",player_id);
-                            return params;
-                        }
-                    };
+                    },error -> {
+                        Log.d("fuck","Eror hoise"+transaction_type+error.toString());
+                    }
+            ){
+                protected Map<String,String> getParams() throws AuthFailureError{
+                    Map<String,String> params = new HashMap<>();
+                    params.put("trx_id",trx_id);
+                    params.put("userid",user_id);
+                    params.put("loginid",login_id);
+                    params.put("mbank_id",mbank_id);
+                    params.put("amount",amount);
+                    params.put("transaction_type",transaction_type);
+                    params.put("method",method);
+                    params.put("selected_package",selected_package);
+                    params.put("player_id",player_id);
+                    return params;
+                }
+            };
 
-            VolleySingleton.getInstance(this).addToRequestQueue(stringRequestConfirm);
+            VolleySingleton.getInstance(this).addToRequestQueue(buyconfirmStringRequest);
 
         });
 

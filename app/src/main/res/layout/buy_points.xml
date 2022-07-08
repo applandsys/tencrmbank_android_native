@@ -71,6 +71,7 @@
                 android:layout_marginTop="24dp"
                 android:background="@drawable/ic_bg_edit_txt"
                 android:hint="পয়েন্টের পরিমান"
+                android:drawableRight="@drawable/ic_baseline_info_24"
                 android:inputType="phone"
                 android:paddingStart="12dp"
                 android:paddingEnd="20dp"

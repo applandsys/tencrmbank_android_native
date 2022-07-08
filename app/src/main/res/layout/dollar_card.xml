@@ -6,7 +6,6 @@
     android:background="@color/deep_purple"
     android:orientation="vertical">
 
-    <!--custom toolbar-->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -56,6 +55,20 @@
             android:orientation="vertical"
             android:padding="20dp">
 
+            <EditText
+                android:id="@+id/player_id_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/ic_bg_edit_txt"
+                android:drawableRight="@drawable/ic_baseline_info_24"
+                android:hint="ইমেইল আইডি"
+                android:inputType="text"
+                android:paddingStart="12dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="4dp"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
 
             <Spinner
                 android:id="@+id/packagespinner"
@@ -90,4 +103,62 @@
 
     </androidx.cardview.widget.CardView>
 
+    <!--register form-->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:backgroundTint="@color/light_purple"
+        app:cardCornerRadius="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/card_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:paddingTop="2dp"
+                android:text="পূর্বেই ক্রয় করে থাকলে TrxID দিয়ে কার্ড সার্চ দিন"
+                android:textColor="@color/white"
+                android:paddingBottom="10dp"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+
+            <EditText
+                android:id="@+id/trxid_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/ic_bg_edit_txt"
+                android:drawableRight="@drawable/ic_baseline_info_24"
+                android:hint="TrxID"
+                android:inputType="text"
+                android:paddingStart="12dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="4dp"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+
+
+            <Button
+                android:id="@+id/search"
+                android:layout_width="200dp"
+                android:layout_height="52dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bg_gradient_rec"
+                android:drawablePadding="8dp"
+                android:text="Search"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 </LinearLayout>

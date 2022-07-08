@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/deep_purple"
@@ -62,6 +63,7 @@
                 android:layout_height="60dp"
                 android:background="@drawable/ic_bg_edit_txt"
                 android:hint="প্লেয়ার আইডি"
+                android:drawableRight="@drawable/ic_baseline_info_24"
                 android:inputType="text"
                 android:paddingStart="12dp"
                 android:paddingEnd="20dp"
@@ -77,7 +79,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="@drawable/ic_bg_edit_txt"
-                android:hint="প্লেয়ার আইডি"
                 android:inputType="text"
                 android:paddingStart="12dp"
                 android:paddingEnd="20dp"
@@ -103,5 +104,127 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/info_box"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginStart="24dp"
+        android:visibility="gone"
+        android:layout_marginEnd="24dp">
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="80dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_white_shadow_lightpurple"
+            android:padding="8dp"
+            android:text="প্যাকঃ "
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/pack_info_edittext"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_white_shadow_lightpurple"
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView19"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView19"
+            app:layout_constraintTop_toTopOf="@+id/textView19" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="80dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/bg_white_shadow_mudpurple"
+            android:padding="8dp"
+            android:text="চিপসঃ"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/textView19"
+            app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+        <TextView
+            android:id="@+id/chips_amount_edittext"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_white_shadow_mudpurple"
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView21"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView21"
+            app:layout_constraintTop_toTopOf="@+id/textView21" />
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="80dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/bg_white_shadow_lightpurple"
+            android:padding="8dp"
+            android:text="লিমিটঃ"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/textView19"
+            app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+        <TextView
+            android:id="@+id/limit_info_edittext"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_white_shadow_lightpurple"
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView23"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView23"
+            app:layout_constraintTop_toTopOf="@+id/textView23" />
+
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="80dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/bg_white_shadow_mudpurple"
+            android:padding="8dp"
+            android:text="মেয়াদঃ "
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/textView19"
+            app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+        <TextView
+            android:id="@+id/expiry_info_edittext"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_white_shadow_mudpurple"
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView26"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView26"
+            app:layout_constraintTop_toTopOf="@+id/textView26" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

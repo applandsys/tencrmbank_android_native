@@ -7,8 +7,6 @@
     android:background="@color/deep_purple"
     android:orientation="vertical"
     tools:context=".HomeActivity">
-
-
     <!--top navigation-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -74,11 +72,6 @@
 
 
     </LinearLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -468,27 +461,8 @@
                         android:text="হিসাব পত্র"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_18sdp" />
+
                 </LinearLayout>
-
-
-                <LinearLayout
-                    android:background="@color/deep_purple"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_48sdp"
-                    android:layout_marginBottom="2dp"
-                    android:foreground="?attr/selectableItemBackgroundBorderless"
-                    android:gravity="center"
-                    android:padding="3sp"
-                    android:orientation="horizontal"
-                    tools:targetApi="m"/>
-
             </LinearLayout>
-
-
-
         </LinearLayout>
-
-    </ScrollView>
-
-
 </LinearLayout>

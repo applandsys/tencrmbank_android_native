@@ -2,6 +2,7 @@ package com.example.a10crmbank;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.text.TextUtils;
 import android.widget.EditText;
 
@@ -17,6 +18,8 @@ public class ChipsMinibankActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.minibank_chips);
         chips_amount_edittext = findViewById(R.id.chips_amount_edittext);
+
+        chips_amount_edittext.setFilters(new InputFilter[]{ new InputFilterMinMax("5", "150")});
 
         findViewById(R.id.btn_pay).setOnClickListener(view -> {
 
