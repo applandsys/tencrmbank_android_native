@@ -14,9 +14,11 @@ import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -151,6 +153,68 @@ public class HomeActivity extends AppCompatActivity {
         setListener(gold_pass, GoldPassActivity.class);
         setListener(pubg, PubgActivity.class);
         setListener(history, HistoryActivity.class);
+
+        // Game gula check kora
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = URLs.GAME_CHECK;
+        StringRequest gamecheckRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d("fuck",response.toString());
+                        try {
+                            JSONArray gamearr = new JSONArray(response);
+
+                            int total_game = gamearr.length();
+
+                            for(int i=0; i < total_game; i++ ){
+                                JSONObject obj = gamearr.getJSONObject(i);
+
+                                String game_name = obj.getString("game_name");
+                                String is_active = obj.getString("is_active");
+
+                                if( game_name.matches("tpg")  && is_active.matches("no")){
+                                    gift_card.setVisibility(View.INVISIBLE);
+                                }
+
+                                if( game_name.matches("vip")  && is_active.matches("no")){
+                                    vip_card.setVisibility(View.INVISIBLE);
+                                }
+
+                                if( game_name.matches("gullak")  && is_active.matches("no")){
+                                    gullak.setVisibility(View.INVISIBLE);
+                                }
+
+                                if( game_name.matches("goldpass")  && is_active.matches("no")){
+                                    gold_pass.setVisibility(View.INVISIBLE);
+                                }
+
+                                if( game_name.matches("playcard")  && is_active.matches("no")){
+                                    gift_card.setVisibility(View.INVISIBLE);
+                                }
+
+                                if( game_name.matches("pubg")  && is_active.matches("no")){
+                                    pubg.setVisibility(View.INVISIBLE);
+                                }
+
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            // Log.d("fuck","wanamarysalma"+e.toString());
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("fuck",error.toString());
+            }
+        });
+
+        queue.add(gamecheckRequest);
+
+        // game gula check kora end
 
 
     }

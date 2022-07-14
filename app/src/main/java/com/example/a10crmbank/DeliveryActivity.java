@@ -35,6 +35,7 @@ public class DeliveryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.delivery_activity);
+        product_info =  findViewById(R.id.product_info);
 
         Users users = SharedPrefManager.getInstance(getApplicationContext()).getUser();
         user_id = users.getUser_id();

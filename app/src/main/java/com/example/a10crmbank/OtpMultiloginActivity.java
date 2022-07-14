@@ -38,15 +38,11 @@ public class OtpMultiloginActivity extends AppCompatActivity {
 
         note_email =  findViewById(R.id.note_email);
 
-           Intent intent = getIntent();
-           String email_id = intent.getStringExtra("email_id");
-           String mytext= email_id + " ইমেইলে যে গিয়েছে তা এখানে লিখুন বা কপি পেস্ট করুন";
-
-           note_email.setText(mytext);
-
+        Intent intent = getIntent();
+        String message = intent.getStringExtra("message");
+        note_email.setText(message);
 
         findViewById(R.id.confirm_button).setOnClickListener((View v) -> {
-
             otp_code = otp_edittext.getText().toString();
             if(TextUtils.isEmpty(otp_code)){
                 otp_edittext.setError("Please Input Otp");
@@ -56,6 +52,7 @@ public class OtpMultiloginActivity extends AppCompatActivity {
 
             StringRequest stringRequestConfirm = new StringRequest(Request.Method.POST, URLs.LOGIN_OTP_VERIFY,
                     response -> {
+                        Log.d("fuck",response.toString());
                         try {
                             JSONObject obj = new JSONObject(response);
                             String status = obj.getString("status");
@@ -70,7 +67,8 @@ public class OtpMultiloginActivity extends AppCompatActivity {
                                 );
 
                                 SharedPrefManager.getInstance(getApplicationContext()).userLogin(userss);
-                                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+
                             }else if(status.matches("expired")){
                                 openAlert("Login Failed",message_text);
                                 return;

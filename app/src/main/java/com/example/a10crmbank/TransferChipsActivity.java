@@ -40,7 +40,7 @@ public class TransferChipsActivity extends AppCompatActivity {
         mbank_id_edittext =  findViewById(R.id.mbank_id_edittext);
         chips_amount_edittext = findViewById(R.id.chips_amount_edittext);
 
-        chips_amount_edittext.setFilters(new InputFilter[]{ new InputFilterMinMax("5", "50")});
+       // chips_amount_edittext.setFilters(new InputFilter[]{ new InputFilterMinMax("5", "50")});
 
         chips_amount_edittext.setOnTouchListener( new DrawableClickListener.RightDrawableClickListener(chips_amount_edittext)
         {
@@ -72,11 +72,16 @@ public class TransferChipsActivity extends AppCompatActivity {
                 return;
             }
 
+            if(Integer.parseInt(chips_amount)<=5 || Integer.parseInt(chips_amount)>=50){
+                chips_amount_edittext.setError("Enter Amount 5-50");
+                chips_amount_edittext.requestFocus();
+                return;
+            }
+
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.TRANSFER_TPG,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-
                             try {
                                 //converting response to json object
                                 JSONObject obj = new JSONObject(response);
@@ -91,7 +96,6 @@ public class TransferChipsActivity extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-
                         }
                     })
             {

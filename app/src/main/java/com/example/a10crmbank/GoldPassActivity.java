@@ -63,10 +63,6 @@ public class GoldPassActivity extends AppCompatActivity {
                 return;
             }
 
-            // Name check
-
-            // check player id
-
             StringRequest stringRequestcheck = new StringRequest(Request.Method.POST,URLs.BUY_CONFIRM,
                     response -> {
                         try {

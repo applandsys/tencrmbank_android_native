@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:paddingTop="2dp"
-                android:text="পসওয়ার্ড রিকভারি"
+                android:text="ওটিপি ভেরিফিকেশন"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />

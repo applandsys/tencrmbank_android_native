@@ -6,7 +6,7 @@ public class URLs {
   //  public static final String URL_LOGIN= ROOT_URL + "api/login";
 
     public static final String LOGOUT= ROOT_URL + "api/logout";
-    public static final String OFFER= ROOT_URL + "api/offer";
+
 
 
     public static final String CHANGEPASS = ROOT_URL + "api/changePass";
@@ -44,5 +44,7 @@ public class URLs {
 
     public static final String SEARCH_CARD= ROOT_URL + "api/v2/search_card";
     public static final String SEARCH_FREEFIRE= ROOT_URL + "api/v2/search_freefire";
+
+    public static final String OFFER= ROOT_URL + "api/v2/offer";
 
 }

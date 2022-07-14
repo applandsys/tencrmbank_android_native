@@ -40,7 +40,7 @@ public class TransferPointActivity extends AppCompatActivity {
         mbank_id_edittext =  findViewById(R.id.mbank_id_edittext);
         point_amount_edittext = findViewById(R.id.point_amount_edittext);
 
-        point_amount_edittext.setFilters(new InputFilter[]{ new InputFilterMinMax("100", "500")});
+      //  point_amount_edittext.setFilters(new InputFilter[]{ new InputFilterMinMax("100", "500")});
 
 
         point_amount_edittext.setOnTouchListener( new DrawableClickListener.RightDrawableClickListener(point_amount_edittext)
@@ -69,6 +69,12 @@ public class TransferPointActivity extends AppCompatActivity {
 
             if(TextUtils.isEmpty(point_amount)){
                 point_amount_edittext.setError("Please enter point amount");
+                point_amount_edittext.requestFocus();
+                return;
+            }
+
+            if(Integer.parseInt(point_amount)<=100 || Integer.parseInt(point_amount)>=500){
+                point_amount_edittext.setError("Enter Amount 100-100");
                 point_amount_edittext.requestFocus();
                 return;
             }

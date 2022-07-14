@@ -170,7 +170,7 @@
                     android:gravity="center"
                     android:maxLines="1"
                     android:padding="8dp"
-                    android:text="গিফন্ট"
+                    android:text="গিফট"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_14sdp"
                     android:textStyle="bold"

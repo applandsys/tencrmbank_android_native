@@ -28,7 +28,7 @@ public class BuyPointActivity extends AppCompatActivity {
         setContentView(R.layout.buy_points);
         point_amount_edittext= findViewById(R.id.point_amount_edittext);
 
-        point_amount_edittext.setFilters(new InputFilter[]{ new InputFilterMinMax("99", "2000")});
+    //    point_amount_edittext.setFilters(new InputFilter[]{ new InputFilterMinMax("99", "2000")});
 
         point_amount_edittext.setOnTouchListener( new DrawableClickListener.RightDrawableClickListener(point_amount_edittext)
         {
@@ -58,6 +58,13 @@ public class BuyPointActivity extends AppCompatActivity {
                 point_amount_edittext.requestFocus();
                 return;
             }
+
+            if(Integer.parseInt(point_amount)<=99 || Integer.parseInt(point_amount)>=2000){
+                point_amount_edittext.setError("Enter Amount 99-2000");
+                point_amount_edittext.requestFocus();
+                return;
+            }
+
             Intent intent = new Intent(getApplicationContext(), PaymentMethodActivity.class);
             intent.putExtra("transaction_type","buy_point");
             intent.putExtra("amount",point_amount);

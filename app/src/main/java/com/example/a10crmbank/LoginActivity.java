@@ -33,15 +33,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
-
     private View buy_chips, vip_card, gullak, gold_pass, gift_card, free_fire, pubg;
     private ImageButton home, settings, offer, info;
     private TextView password_reset_edittext;
-
-    // for login
     private String mobile_number_value , password_value;
     private EditText mobiel_number, loin_password ;
-
     ProgressBar progressBar;
 
     @Override
@@ -179,20 +175,19 @@ public class LoginActivity extends AppCompatActivity {
                         try {
                             JSONObject obj = new JSONObject(response);
                             String login_status = obj.getString("status");
+                            String message = obj.getString("message");
                             if( login_status.matches("true") ){
-
                                 Users userss = new Users(
                                         obj.getString("user_id"),
                                         obj.getString("playerid"),
                                         obj.getString("name"),
                                         obj.getString("loginid")
                                 );
-
                                 SharedPrefManager.getInstance(getApplicationContext()).userLogin(userss);
-
                                 startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                             }else if(login_status.matches("multiple") ){
                                 Intent intent =  new Intent(getApplicationContext(), OtpMultiloginActivity.class);
+                                intent.putExtra("message",message);
                                 startActivity(intent);
                             }else if(login_status.matches("fail")){
                                 // alert dialog
@@ -216,12 +211,9 @@ public class LoginActivity extends AppCompatActivity {
                                 return;
                             }
 
-                         //   finish();
-
-
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Log.d("fuck","error ase cactch");
+                            Log.d("fuck","error ase cactch"+e.toString());
                             Toast.makeText(getApplicationContext(),e.toString(),Toast.LENGTH_LONG).show();
                         }
                     },error -> {
@@ -250,13 +242,13 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         // Game gula check kora
-        // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = URLs.GAME_CHECK;
         StringRequest gamecheckRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        Log.d("fuck",response.toString());
                         try {
                             JSONArray gamearr = new JSONArray(response);
 

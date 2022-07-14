@@ -40,7 +40,7 @@ public class GiftActivity extends AppCompatActivity {
         player_id_edittext = findViewById(R.id.player_id_edittext);
         chips_amount_edittext = findViewById(R.id.chips_amount_edittext);
 
-        chips_amount_edittext.setFilters(new InputFilter[]{ new InputFilterMinMax("1", "50")});
+      //  chips_amount_edittext.setFilters(new InputFilter[]{ new InputFilterMinMax("1", "50")});
 
         player_id_edittext.setOnTouchListener( new DrawableClickListener.RightDrawableClickListener(player_id_edittext)
         {
@@ -95,6 +95,12 @@ public class GiftActivity extends AppCompatActivity {
             if(TextUtils.isEmpty(chips_amount)){
                 chips_amount_edittext.setError("Pleasse enter amount");
                 chips_amount_edittext.requestFocus();
+            }
+
+            if(Integer.parseInt(chips_amount)<=1 || Integer.parseInt(chips_amount)>=50){
+                chips_amount_edittext.setError("Enter Amount 1-50");
+                chips_amount_edittext.requestFocus();
+                return;
             }
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.GIFT_TPG,
