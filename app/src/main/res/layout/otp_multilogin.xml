@@ -6,7 +6,6 @@
     android:background="@color/deep_purple"
     android:orientation="vertical">
 
-    <!--custom toolbar-->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"

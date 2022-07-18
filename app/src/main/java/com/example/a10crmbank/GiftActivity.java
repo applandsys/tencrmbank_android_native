@@ -57,7 +57,7 @@ public class GiftActivity extends AppCompatActivity {
             @Override
             public boolean onDrawableClick()
             {
-                showInfo("5-50CR ", "এক সাথে 1-50CR এর বেশি কিনা যাবে না।");
+                showInfo("5-50CR ", "এক সাথে 5-50CR এর বেশি কিনা যাবে না।");
                 return true;
             }
         } );
@@ -97,8 +97,8 @@ public class GiftActivity extends AppCompatActivity {
                 chips_amount_edittext.requestFocus();
             }
 
-            if(Integer.parseInt(chips_amount)<=1 || Integer.parseInt(chips_amount)>=50){
-                chips_amount_edittext.setError("Enter Amount 1-50");
+            if(Integer.parseInt(chips_amount)<=5 || Integer.parseInt(chips_amount)>=50){
+                chips_amount_edittext.setError("Enter Amount 5-50");
                 chips_amount_edittext.requestFocus();
                 return;
             }

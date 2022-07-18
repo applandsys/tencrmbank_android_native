@@ -136,8 +136,6 @@
                         android:textColor="@color/white"
                         android:textColorHint="@color/white" />
 
-
-
                     <Button
                         android:id="@+id/btn_login"
                         android:layout_width="@dimen/_120sdp"
@@ -260,6 +258,7 @@
 
                     <!--gullak-->
                     <LinearLayout
+                        android:id="@+id/gullak"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginEnd="1dp"
@@ -269,7 +268,6 @@
                         android:orientation="vertical">
 
                         <LinearLayout
-                            android:id="@+id/gullak"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="vertical">
@@ -295,6 +293,7 @@
 
                     <!--gold pass-->
                     <LinearLayout
+                        android:id="@+id/gold_pass"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -303,7 +302,6 @@
                         android:orientation="vertical">
 
                         <LinearLayout
-                            android:id="@+id/gold_pass"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="vertical">
@@ -333,6 +331,7 @@
 
                 <!--column two-->
                 <LinearLayout
+                    android:id="@+id/gift_card"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_96sdp"
                     android:layout_marginBottom="1dp"
@@ -351,7 +350,6 @@
                         android:orientation="vertical">
 
                         <LinearLayout
-                            android:id="@+id/gift_card"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="vertical">
@@ -381,7 +379,7 @@
 
                     <!--free-fire-->
                     <LinearLayout
-
+                        android:id="@+id/free_fire"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginTop="1dp"
@@ -392,7 +390,7 @@
                         android:orientation="vertical">
 
                         <LinearLayout
-                            android:id="@+id/free_fire"
+
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="vertical">
@@ -418,6 +416,7 @@
 
                     <!--pubg-->
                     <LinearLayout
+                        android:id="@+id/pubg"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginTop="1dp"
@@ -426,7 +425,6 @@
                         android:foreground="?attr/selectableItemBackgroundBorderless"
                         android:orientation="vertical">
                         <LinearLayout
-                            android:id="@+id/pubg"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="vertical">
