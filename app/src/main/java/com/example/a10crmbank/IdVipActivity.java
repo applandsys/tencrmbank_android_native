@@ -57,7 +57,7 @@ public class IdVipActivity extends AppCompatActivity {
             @Override
             public boolean onDrawableClick()
             {
-                showInfo("প্লেয়ায়র আইডি", "গেমসের সেটিংস এ প্লেয়ায়র আইডি থাকে।\n");
+                showInfo("প্লেয়ায়র আইডি", "গেমসের সেটিংস এ প্লেয়ায়র আইডি থাকে।");
                 return true;
             }
         } );

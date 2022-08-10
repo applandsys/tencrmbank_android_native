@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,8 @@ public class GiftActivity extends AppCompatActivity {
         player_id_edittext = findViewById(R.id.player_id_edittext);
         chips_amount_edittext = findViewById(R.id.chips_amount_edittext);
 
+
+
       //  chips_amount_edittext.setFilters(new InputFilter[]{ new InputFilterMinMax("1", "50")});
 
         player_id_edittext.setOnTouchListener( new DrawableClickListener.RightDrawableClickListener(player_id_edittext)
@@ -47,7 +50,7 @@ public class GiftActivity extends AppCompatActivity {
             @Override
             public boolean onDrawableClick()
             {
-                showInfo("প্লেয়ার আইডি", "প্লেয়ার আইডি ও বুলেট কোড এর ফরমেট দিয়ে দিন");
+                showInfo("প্লেয়ার আইডি", "প্লেয়ার আইডি ও বুলেট কোড এর ফরমেট দিয়ে দিন (প্লেয়ার আইডি গেমসের সেটিংসে পাবেন)");
                 return true;
             }
         } );
@@ -57,7 +60,7 @@ public class GiftActivity extends AppCompatActivity {
             @Override
             public boolean onDrawableClick()
             {
-                showInfo("5-50CR ", "এক সাথে 5-50CR এর বেশি কিনা যাবে না।");
+                showInfo("1-50CR ", "এক সাথে 1-50CR  গিফ্ট করা যাবে");
                 return true;
             }
         } );
@@ -81,6 +84,7 @@ public class GiftActivity extends AppCompatActivity {
             if(TextUtils.isEmpty(player_id)){
                 player_id_edittext.setError("Please enter player id");
                 player_id_edittext.requestFocus();
+                return;
             }
 
             String regexString = "[A-Za-z]{4}[0-9]{3}|100+[0-9]{5,12}";
@@ -89,16 +93,18 @@ public class GiftActivity extends AppCompatActivity {
             {
                 player_id_edittext.setError("Please enter correct format");
                 player_id_edittext.requestFocus();
+                return;
             }
 
 
             if(TextUtils.isEmpty(chips_amount)){
                 chips_amount_edittext.setError("Pleasse enter amount");
                 chips_amount_edittext.requestFocus();
+                return;
             }
 
-            if(Integer.parseInt(chips_amount)<=5 || Integer.parseInt(chips_amount)>=50){
-                chips_amount_edittext.setError("Enter Amount 5-50");
+            if(Integer.parseInt(chips_amount)>=50){
+                chips_amount_edittext.setError("Enter Amount 1-50");
                 chips_amount_edittext.requestFocus();
                 return;
             }
@@ -107,8 +113,16 @@ public class GiftActivity extends AppCompatActivity {
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
+                            Log.d("fuck",response);
                             try {
                                 JSONObject obj = new JSONObject(response);
+                                String status = obj.getString("status");
+                                String message = obj.getString("message");
+                                Log.d("fuck",status);
+                                if(status.matches("pushed") ){
+                                    showInfo("Paused","Account is paused");
+                                    return;
+                                }
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -117,7 +131,7 @@ public class GiftActivity extends AppCompatActivity {
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-
+                            Log.d("fuck",error.toString());
                         }
                     }
 
@@ -126,8 +140,8 @@ public class GiftActivity extends AppCompatActivity {
                 protected Map<String, String> getParams() throws AuthFailureError {
                    Map<String,String> params = new HashMap<>();
                    params.put("transaction_type","gift_tpg");
-                   params.put("userid",post_user_id);
-                   params.put("loginid",post_login_id);
+                    params.put("userid", user_id);
+                    params.put("loginid", login_id);
                    params.put("request","1");
                    params.put("chips",chips_amount);
                    params.put("playerid",player_id);

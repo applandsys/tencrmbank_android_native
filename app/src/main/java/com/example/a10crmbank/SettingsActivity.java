@@ -2,6 +2,9 @@ package com.example.a10crmbank;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -39,6 +42,14 @@ public class SettingsActivity extends AppCompatActivity {
         player_id_textview = findViewById(R.id.player_id_textview);
         mobile_number_textview = findViewById(R.id.mobile_number_textview);
         email_textview = findViewById(R.id.email_textview);
+
+        mbankid_textview.setOnClickListener(view -> {
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clipData = ClipData.newPlainText("MBankId",mbankid_textview.getText().toString());
+            clipboard.setPrimaryClip(clipData);
+
+            Toast.makeText(SettingsActivity.this,"Mbank Id Copied to Clipboard",Toast.LENGTH_LONG).show();
+        });
 
         Users users = SharedPrefManager.getInstance(getApplicationContext()).getUser();
         String user_id = users.getUser_id();
@@ -105,7 +116,6 @@ public class SettingsActivity extends AppCompatActivity {
         };
 
         VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
-
 
         // Get Home Page data fromm server
 

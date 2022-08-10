@@ -7,10 +7,7 @@ public class URLs {
 
     public static final String LOGOUT= ROOT_URL + "api/logout";
 
-
-
     public static final String CHANGEPASS = ROOT_URL + "api/changePass";
-
 // Version 2//
     public static final String URL_LOGIN= ROOT_URL + "api/v2/login";
     public static final String LOGIN_OTP_VERIFY= ROOT_URL + "api/v2/code_verify";
@@ -19,6 +16,7 @@ public class URLs {
     public static final String GIFT_TPG = ROOT_URL + "api/v2/gifttpg";
     public static final String TRANSFER_TPG = ROOT_URL + "api/v2/transfer_tpg";
     public static final String TRANSFER_POINT = ROOT_URL + "api/v2/transfer_point";
+
 
     public static final String VIPPACKAGE = ROOT_URL + "api/v2/vip_pakcage";
     public static final String GULLACK_PACKAGE = ROOT_URL + "api/v2/gullack_package";
@@ -36,7 +34,6 @@ public class URLs {
 
     public static final String HISTORY= ROOT_URL + "api/v2/history";
 
-
     public static final String UPDATE_PLAYER_ID= ROOT_URL + "api/v2/update_playerid";
     public static final String UPDATE_MYNAME= ROOT_URL + "api/v2/update_name";
     public static final String CARDBUY_CONFIRM= ROOT_URL + "api/v2/cardbuy_confirm";
@@ -46,5 +43,8 @@ public class URLs {
     public static final String SEARCH_FREEFIRE= ROOT_URL + "api/v2/search_freefire";
 
     public static final String OFFER= ROOT_URL + "api/v2/offer";
+
+    public static final String ADDRESS_INFO = ROOT_URL + "api/v2/address_info";
+    public static final String UPDATE_ADDRESS = ROOT_URL + "api/v2/update_address";
 
 }

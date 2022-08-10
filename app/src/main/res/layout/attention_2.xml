@@ -25,7 +25,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="0dp"
                 android:src="@drawable/ic_arrow_back_24" />
 
             <TextView
@@ -33,9 +32,9 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:text="Attention"
+                android:textStyle="bold"
                 android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="20sp" />
 
         </RelativeLayout>
 
@@ -57,23 +56,36 @@
             android:padding="24dp">
 
             <TextView
+                android:paddingTop="4dp"
                 android:id="@+id/txt_attention"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="4dp"
-                android:text="@string/attention_text_2"
+                android:text="@string/attention_text"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_16sdp" />
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/no_account_register"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                />
 
 
             <Button
-                android:id="@+id/btn_mbank"
-                style="@style/button_mbank"
-                android:layout_width="match_parent"
+                android:id="@+id/btn_get_hlp"
+                android:layout_width="200dp"
                 android:layout_height="60dp"
-                android:drawableLeft="@drawable/ic_mbank_24"
+                android:layout_gravity="center"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="48dp"
+                android:background="@drawable/bg_gradient_rec"
+                android:drawableLeft="@drawable/ic_baseline_info_24"
                 android:drawablePadding="8dp"
-                android:text="মিনি ব্যাংক চিপস" />
+                android:text="@string/get_help"
+                android:textSize="20sp" />
 
         </LinearLayout>
 

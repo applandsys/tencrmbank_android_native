@@ -49,6 +49,7 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(new Intent(this, HomeActivity.class));
         }
 
+
         Users users = SharedPrefManager.getInstance(getApplicationContext()).getUser();
         String user_id = users.getUser_id();
         String login_id = users.getLoginid();
@@ -96,7 +97,6 @@ public class LoginActivity extends AppCompatActivity {
 
         settings.setOnClickListener(view -> {
             if(user_id==null && login_id==null){
-              //  Toast.makeText(getApplicationContext(), "Register/Login First", Toast.LENGTH_SHORT).show();
                 openAlert();
             }else{
                 startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
@@ -124,33 +124,7 @@ public class LoginActivity extends AppCompatActivity {
         free_fire = findViewById(R.id.free_fire);
         pubg = findViewById(R.id.pubg);
 
-        buy_chips.setOnClickListener(view -> {
-            startActivity(new Intent(getApplicationContext(), BuyChips24hActivity.class));
-        });
-
-        vip_card.setOnClickListener(view -> {
-            startActivity(new Intent(getApplicationContext(), IdVipActivity.class));
-        });
-
-        gullak.setOnClickListener(view -> {
-            startActivity(new Intent(getApplicationContext(), GullakBreakActivity.class));
-        });
-
-        gold_pass.setOnClickListener(view -> {
-            startActivity(new Intent(getApplicationContext(), GoldPassActivity.class));
-        });
-
-        gift_card.setOnClickListener(view -> {
-            startActivity(new Intent(getApplicationContext(), GiftCardActivity.class));
-        });
-
-        free_fire.setOnClickListener(view -> {
-            startActivity(new Intent(getApplicationContext(), FreeFireActivity.class));
-        });
-
-        pubg.setOnClickListener(view -> {
-            startActivity(new Intent(getApplicationContext(), PubgActivity.class));
-        });
+        Games games = new Games();
 
         findViewById(R.id.btn_login).setOnClickListener(view -> {
             mobile_number_value = mobiel_number.getText().toString().trim();
@@ -162,15 +136,16 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            if (TextUtils.isEmpty(mobile_number_value)) {
-                loin_password.setError("Please enter your Password");
-                loin_password.requestFocus();
-                return;
+            String regexString = "01+[0-9]{9}";
+
+            if(!mobile_number_value.trim().matches(regexString))
+            {
+                mobiel_number.setError("Please enter correct format");
+                mobiel_number.requestFocus();
             }
 
             StringRequest loginstringRequest = new StringRequest(Request.Method.POST,URLs.URL_LOGIN,
                     response -> {
-                        Log.d("fuck",response.toString());
                         progressBar.setVisibility(View.GONE);
                         try {
                             JSONObject obj = new JSONObject(response);
@@ -213,7 +188,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Log.d("fuck","error ase cactch"+e.toString());
+                         //   Log.d("fuck","error ase cactch"+e.toString());
                             Toast.makeText(getApplicationContext(),e.toString(),Toast.LENGTH_LONG).show();
                         }
                     },error -> {
@@ -248,7 +223,6 @@ public class LoginActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d("fuck",response.toString());
                         try {
                             JSONArray gamearr = new JSONArray(response);
 
@@ -261,31 +235,35 @@ public class LoginActivity extends AppCompatActivity {
                                  String is_active = obj.getString("is_active");
 
                                 if( game_name.matches("tpg")  && is_active.matches("no")){
-                                    gift_card.setVisibility(View.INVISIBLE);
+                                     games.setTpg("no");
                                 }
 
                                 if( game_name.matches("vip")  && is_active.matches("no")){
-                                    vip_card.setVisibility(View.INVISIBLE);
+                                    games.setVip("no");
                                 }
 
                                 if( game_name.matches("gullak")  && is_active.matches("no")){
-                                    gullak.setVisibility(View.INVISIBLE);
+                                    games.setGullak("no");
                                 }
 
                                 if( game_name.matches("goldpass")  && is_active.matches("no")){
-                                    gold_pass.setVisibility(View.INVISIBLE);
+                                    games.setGoldpass("no");
                                 }
 
                                 if( game_name.matches("playcard")  && is_active.matches("no")){
-                                    gift_card.setVisibility(View.INVISIBLE);
+                                    games.setPlaycard("no");
                                 }
 
                                 if( game_name.matches("freefire")  && is_active.matches("no")){
-                                    free_fire.setVisibility(View.INVISIBLE);
+                                    games.setFreefire("no");
                                 }
 
                                 if( game_name.matches("pubg")  && is_active.matches("no")){
-                                    pubg.setVisibility(View.INVISIBLE);
+                                    games.setPubg("no");
+                                }
+
+                                if( game_name.matches("buy_chips") && is_active.matches("no")){
+                                    games.setChips("no");
                                 }
 
                             }
@@ -295,17 +273,79 @@ public class LoginActivity extends AppCompatActivity {
                            // Log.d("fuck","wanamarysalma"+e.toString());
                         }
 
+                        String tpg_status = games.getTpg();
+                        String vip_status = games.getVip();
+                        String gullak_status = games.getGullak();
+                        String giftcard_status = games.getPlaycard();
+                        String goldpas_status = games.getGoldpass();
+                        String pubg_status = games.getPubg();
+                        String freefire_status = games.getFreefire();
+
+                        buy_chips.setOnClickListener(view -> {
+                            if(tpg_status.matches("yes")){
+                                startActivity(new Intent(LoginActivity.this,BuyChips24hActivity.class));
+                            }else{
+                                showInfo("Alert!","এই সেবা টি এখন সচল নেই");
+                            }
+                        });
+                        vip_card.setOnClickListener(view -> {
+                            if(vip_status.matches("no")){
+                                showInfo("Alert!","এই সেবা টি এখন সচল নেই");
+                            }else{
+                                startActivity(new Intent(LoginActivity.this,IdVipActivity.class));
+                            }
+                        });
+
+                        gullak.setOnClickListener(view -> {
+                            if(gullak_status.matches("no")){
+                                showInfo("Alert!","এই সেবা টি এখন সচল নেই");
+                            }else{
+                                startActivity(new Intent(LoginActivity.this,GullakBreakActivity.class));
+                            }
+                        });
+
+                        gift_card.setOnClickListener(view -> {
+                            if(giftcard_status.matches("no")){
+                                showInfo("Alert!","এই সেবা টি এখন সচল নেই");
+                            }else{
+                                startActivity(new Intent(LoginActivity.this,GiftCardActivity.class));
+                            }
+                        });
+
+                        gold_pass.setOnClickListener(view -> {
+                            if(goldpas_status.matches("no")){
+                                showInfo("Alert!","এই সেবা টি এখন সচল নেই");
+                            }else{
+                                startActivity(new Intent(LoginActivity.this,GoldPassActivity.class));
+                            }
+                        });
+
+                        pubg.setOnClickListener(view -> {
+                            if(pubg_status.matches("no")){
+                                showInfo("Alert!","এই সেবা টি এখন সচল নেই");
+                            }else{
+                                startActivity(new Intent(LoginActivity.this,PubgActivity.class));
+                            }
+                        });
+
+                        free_fire.setOnClickListener(view -> {
+                            if(freefire_status.matches("no")){
+                                showInfo("Alert!","এই সেবা টি এখন সচল নেই");
+                            }else{
+                                startActivity(new Intent(LoginActivity.this,FreeFireActivity.class));
+                            }
+                        });
+
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("fuck",error.toString());
+             //   Log.d("fuck",error.toString());
             }
         });
 
         queue.add(gamecheckRequest);
 
-        // game gula check kora end
     }
 
     private void openAlert(){  // alert dialog
@@ -350,5 +390,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
 }

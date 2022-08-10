@@ -48,7 +48,7 @@ public class TransferPointActivity extends AppCompatActivity {
             @Override
             public boolean onDrawableClick()
             {
-                showInfo("5-50CR ", "এক সাথে 100-500Point এর বেশি কিনা যাবে না।");
+                showInfo("100-500Point ", "এক সাথে 100-500Point ট্রাস্নফার করা যাবে । (ব্যালান্সে 150point থাকতে হবে)");
                 return true;
             }
         } );
@@ -66,6 +66,13 @@ public class TransferPointActivity extends AppCompatActivity {
                 mbank_id_edittext.requestFocus();
                 return;
             }
+            String regexString = "200+[0-9]{6,20}";
+            if(!mbank_id.trim().matches(regexString))
+            {
+                mbank_id_edittext.setError("Please enter correct format");
+                mbank_id_edittext.requestFocus();
+                return;
+            }
 
             if(TextUtils.isEmpty(point_amount)){
                 point_amount_edittext.setError("Please enter point amount");
@@ -73,8 +80,8 @@ public class TransferPointActivity extends AppCompatActivity {
                 return;
             }
 
-            if(Integer.parseInt(point_amount)<=100 || Integer.parseInt(point_amount)>=500){
-                point_amount_edittext.setError("Enter Amount 100-100");
+            if(Integer.parseInt(point_amount) < 100 || Integer.parseInt(point_amount) > 500){
+                point_amount_edittext.setError("Enter Amount 100-500");
                 point_amount_edittext.requestFocus();
                 return;
             }

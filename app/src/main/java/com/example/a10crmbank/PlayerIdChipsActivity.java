@@ -52,7 +52,7 @@ public class PlayerIdChipsActivity extends AppCompatActivity {
             @Override
             public boolean onDrawableClick()
             {
-                showInfo("লিমিট", "এক সাথে 1-100CR এর বেশি কিনা যাবে না");
+                showInfo("লিমিট", "এক সাথে 1-100CR কিনা যাবে");
                 return true;
             }
         } );

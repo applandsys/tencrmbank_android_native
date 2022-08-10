@@ -35,10 +35,12 @@ public class BuyPointActivity extends AppCompatActivity {
             @Override
             public boolean onDrawableClick()
             {
-                showInfo("প্লেয়ায়র আইডি", " এক সাথে 99-2000 Point এর বেশি কিনা যাবে না।");
+                showInfo("প্লেয়ায়র আইডি", "এক সাথে 100-2000 Point কিনা যাবে");
                 return true;
             }
         } );
+
+
         Users users = SharedPrefManager.getInstance(getApplicationContext()).getUser();
         String user_id = users.getUser_id();
         String login_id = users.getLoginid();
@@ -59,8 +61,8 @@ public class BuyPointActivity extends AppCompatActivity {
                 return;
             }
 
-            if(Integer.parseInt(point_amount)<=99 || Integer.parseInt(point_amount)>=2000){
-                point_amount_edittext.setError("Enter Amount 99-2000");
+            if(Integer.parseInt(point_amount) < 100 || Integer.parseInt(point_amount) > 2000){
+                point_amount_edittext.setError("Enter Amount 100-2000");
                 point_amount_edittext.requestFocus();
                 return;
             }

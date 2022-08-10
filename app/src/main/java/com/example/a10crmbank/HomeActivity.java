@@ -1,5 +1,6 @@
 package com.example.a10crmbank;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -7,7 +8,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +38,8 @@ public class HomeActivity extends AppCompatActivity {
     private TextView withdraw, gift, transfer, name_textview, balance_edittext,balancepoint_edittext;
     Boolean isLogin;
 
+    Games games = new Games();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +52,15 @@ public class HomeActivity extends AppCompatActivity {
         name_textview = findViewById(R.id.name_textview);
         balance_edittext =  findViewById(R.id.balance_edittext);
         balancepoint_edittext =  findViewById(R.id.balancepoint_edittext);
+
+        buy_point = findViewById(R.id.buy_point);
+        vip_card = findViewById(R.id.vip_card);
+        buy_chips = findViewById(R.id.buy_chips);
+        gullak = findViewById(R.id.gullak);
+        gift_card = findViewById(R.id.gift_card);
+        gold_pass = findViewById(R.id.gold_pass);
+        pubg = findViewById(R.id.pubg);
+        history = findViewById(R.id.history);
 
         Users users = SharedPrefManager.getInstance(getApplicationContext()).getUser();
         String user_id = users.getUser_id();
@@ -71,12 +86,11 @@ public class HomeActivity extends AppCompatActivity {
                             String rawdata = userJson.getString(0);
                             JSONObject myobj = new JSONObject(rawdata);
 
-                            name_textview.setText(myobj.getString("name") );
-                            balance_edittext.setText("Chips: "+obj.getString("balance") + " CR");
+                            name_textview.setText(myobj.getString("name"));
+                            balance_edittext.setText("Chips: "+obj.getString("balance"));
                             balancepoint_edittext.setText("Point: "+obj.getString("balance_point"));
 
                         } catch (JSONException e) {
-                            Log.d("fuck", e.toString());
                             Toast.makeText(getApplicationContext(),e.toString(),Toast.LENGTH_LONG).show();
                             e.printStackTrace();
                         }
@@ -135,24 +149,10 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), TransferActivity.class));
         });
 
+        history.setOnClickListener(view -> {
+            startActivity(new Intent(getApplicationContext(),HistoryActivity.class));
+        });
 
-        buy_point = findViewById(R.id.buy_point);
-        vip_card = findViewById(R.id.vip_card);
-        buy_chips = findViewById(R.id.buy_chips);
-        gullak = findViewById(R.id.gullak);
-        gift_card = findViewById(R.id.gift_card);
-        gold_pass = findViewById(R.id.gold_pass);
-        pubg = findViewById(R.id.pubg);
-        history = findViewById(R.id.history);
-
-        setListener(buy_point, BuyPointActivity.class);
-        setListener(vip_card, IdVipActivity.class);
-        setListener(buy_chips, BuyChips24hActivity.class);
-        setListener(gullak, GullakBreakActivity.class);
-        setListener(gift_card, GiftCardActivity.class);
-        setListener(gold_pass, GoldPassActivity.class);
-        setListener(pubg, PubgActivity.class);
-        setListener(history, HistoryActivity.class);
 
         // Game gula check kora
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -161,7 +161,7 @@ public class HomeActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d("fuck",response.toString());
+
                         try {
                             JSONArray gamearr = new JSONArray(response);
 
@@ -174,27 +174,31 @@ public class HomeActivity extends AppCompatActivity {
                                 String is_active = obj.getString("is_active");
 
                                 if( game_name.matches("tpg")  && is_active.matches("no")){
-                                    gift_card.setVisibility(View.INVISIBLE);
+                                    games.setTpg("no");
                                 }
 
                                 if( game_name.matches("vip")  && is_active.matches("no")){
-                                    vip_card.setVisibility(View.INVISIBLE);
+                                    games.setVip("no");
                                 }
 
                                 if( game_name.matches("gullak")  && is_active.matches("no")){
-                                    gullak.setVisibility(View.INVISIBLE);
+                                    games.setGullak("no");
                                 }
 
                                 if( game_name.matches("goldpass")  && is_active.matches("no")){
-                                    gold_pass.setVisibility(View.INVISIBLE);
+                                    games.setGoldpass("no");
                                 }
 
                                 if( game_name.matches("playcard")  && is_active.matches("no")){
-                                    gift_card.setVisibility(View.INVISIBLE);
+                                    games.setPlaycard("no");
                                 }
 
                                 if( game_name.matches("pubg")  && is_active.matches("no")){
-                                    pubg.setVisibility(View.INVISIBLE);
+                                    games.setPubg("no");
+                                }
+
+                                if( game_name.matches("point")  && is_active.matches("no")){
+                                    games.setPoint("no");
                                 }
 
                             }
@@ -204,23 +208,102 @@ public class HomeActivity extends AppCompatActivity {
                             // Log.d("fuck","wanamarysalma"+e.toString());
                         }
 
+                        String tpg_status = games.getTpg();
+                        String vip_status = games.getVip();
+                        String gullak_status = games.getGullak();
+                        String giftcard_status = games.getPlaycard();
+                        String goldpas_status = games.getGoldpass();
+                        String pubg_status = games.getPubg();
+                        String point_status = games.getPoint();
+
+                        buy_chips.setOnClickListener(view -> {
+                            if(tpg_status.matches("yes")){
+                                startActivity(new Intent(HomeActivity.this,BuyChips24hActivity.class));
+                            }else{
+                                showInfo("Alert!","এই সেবা টি এখন সচল নেই");
+                            }
+                        });
+                        vip_card.setOnClickListener(view -> {
+                            if(vip_status.matches("no")){
+                                showInfo("Alert!","এই সেবা টি এখন সচল নেই");
+                            }else{
+                                startActivity(new Intent(HomeActivity.this,IdVipActivity.class));
+                            }
+                        });
+
+                        gullak.setOnClickListener(view -> {
+                            if(gullak_status.matches("no")){
+                                showInfo("Alert!","এই সেবা টি এখন সচল নেই");
+                            }else{
+                                startActivity(new Intent(HomeActivity.this,GullakBreakActivity.class));
+                            }
+                        });
+
+                        gift_card.setOnClickListener(view -> {
+                            if(giftcard_status.matches("no")){
+                                showInfo("Alert!","এই সেবা টি এখন সচল নেই");
+                            }else{
+                                startActivity(new Intent(HomeActivity.this,GiftCardActivity.class));
+                            }
+                        });
+
+                        gold_pass.setOnClickListener(view -> {
+                            if(goldpas_status.matches("no")){
+                                showInfo("Alert!","এই সেবা টি এখন সচল নেই");
+                            }else{
+                                startActivity(new Intent(HomeActivity.this,GoldPassActivity.class));
+                            }
+                        });
+
+                        pubg.setOnClickListener(view -> {
+                            if(pubg_status.matches("no")){
+                                showInfo("Alert!","এই সেবা টি এখন সচল নেই");
+                            }else{
+                                startActivity(new Intent(HomeActivity.this,PubgActivity.class));
+                            }
+                        });
+
+                        buy_point.setOnClickListener(view -> {
+                            if(point_status.matches("no")){
+                                showInfo("Alert!","এই সেবা টি এখন সচল নেই");
+                            }else{
+                                startActivity(new Intent(HomeActivity.this,BuyPointActivity.class));
+                            }
+                        });
+
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("fuck",error.toString());
+              //  Log.d("fuck",error.toString());
             }
         });
 
         queue.add(gamecheckRequest);
 
-        // game gula check kora end
-
 
     }
 
-    private void setListener(View v,Class<?> destination){
-        v.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), destination)));
+
+    private void showInfo(String title, String description){
+        // TODO : insert code to perform on clicking of the RIGHT drawable image...
+        final AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this,R.style.CustomAlertDialog);
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+        View dialogView = LayoutInflater.from(HomeActivity.this).inflate(R.layout.customview, viewGroup, false);
+        Button buttonOk = dialogView.findViewById(R.id.buttonOk);
+        TextView alert_title = dialogView.findViewById(R.id.alert_title);
+        TextView alert_description = dialogView.findViewById(R.id.alert_description);
+        alert_title.setText(title);
+        alert_description.setText(description);
+        builder.setView(dialogView);
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+        buttonOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
     }
 
 

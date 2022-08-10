@@ -116,7 +116,7 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="12dp"
                 android:background="@drawable/bg_gradient_rec"
-                android:drawableLeft="@drawable/upay_logo_small"
+                android:drawableLeft="@drawable/upay_logo_new"
                 android:drawablePadding="8dp"
                 android:onClick="paymentMethod"
                 android:text="উপায়"

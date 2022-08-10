@@ -51,6 +51,8 @@ public class HistoryDetailsActivity extends AppCompatActivity {
         StringRequest stringRequest = new StringRequest(Request.Method.POST,URLs.HISTORY,
                 response -> {
 
+                    Log.d("fuck",response.toString());
+
                     try {
                         ArrayList<History> data = new ArrayList<>(); // eta ekta array list ja History Pojoclass type
 

@@ -124,6 +124,14 @@ public class RegisterActivity extends AppCompatActivity {
                 return;
             }
 
+            String regexString = "01+[0-9]{11}";
+
+            if(!mobile_number.trim().matches(regexString))
+            {
+                mobile_number_editext.setError("Please enter correct format");
+                mobile_number_editext.requestFocus();
+            }
+
             if(TextUtils.isEmpty(email)){
                 email_edittext.setError("Please enter Email");
                 email_edittext.requestFocus();

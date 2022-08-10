@@ -47,7 +47,7 @@ public class TransferChipsActivity extends AppCompatActivity {
             @Override
             public boolean onDrawableClick()
             {
-                showInfo("5-50CR ", "এক সাথে 5-50CR এর বেশি কিনা যাবে না। (বালান্সে 10CR+ থাকতে হবে)");
+                showInfo("5-50CR ", "এক সাথে 5-50CR ট্রাস্নফার করা যাবে। (বালান্সে 10CR+ থাকতে হবে)");
                 return true;
             }
         } );
@@ -66,13 +66,22 @@ public class TransferChipsActivity extends AppCompatActivity {
                 return;
             }
 
+            String regexString = "200+[0-9]{6,20}";
+
+            if(!mbank_id.trim().matches(regexString))
+            {
+                mbank_id_edittext.setError("Please enter correct format");
+                mbank_id_edittext.requestFocus();
+                return;
+            }
+
             if(TextUtils.isEmpty(chips_amount)){
                 chips_amount_edittext.setError("Please enter Chips amount");
                 chips_amount_edittext.requestFocus();
                 return;
             }
 
-            if(Integer.parseInt(chips_amount)<=5 || Integer.parseInt(chips_amount)>=50){
+            if(Integer.parseInt(chips_amount )< 5 || Integer.parseInt(chips_amount) > 50){
                 chips_amount_edittext.setError("Enter Amount 5-50");
                 chips_amount_edittext.requestFocus();
                 return;

@@ -47,29 +47,31 @@ public class WithdrawActivity extends AppCompatActivity {
             @Override
             public boolean onDrawableClick()
             {
-                showInfo("5-50CR ", "এক সাথে 1-50CR এর বেশি কিনা যাবে না।");
+                showInfo("1-50CR ", "এক সাথে 1-50CR উইথড্র করা যাবে");
                 return true;
             }
-        } );
+        });
 
         Users users = SharedPrefManager.getInstance(getApplicationContext()).getUser();
         String user_id = users.getUser_id();
         String login_id = users.getLoginid();
 
         findViewById(R.id.withdraw_button).setOnClickListener(view ->{
-
             withdraw_input_value =    withdraw_input_edittext.getText().toString().trim();
 
+            if(Integer.parseInt(withdraw_input_value)>=50){
+                withdraw_input_edittext.setError("Enter Amount 1-50");
+                withdraw_input_edittext.requestFocus();
+                return;
+            }
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.WITHDRAAW,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-
                             try {
                                 //converting response to json object
                                 JSONObject obj = new JSONObject(response);
                                 alert_text.setText(obj.getString("message"));
-
                             } catch (JSONException e) {
                                 Toast.makeText(getApplicationContext(),e.toString(),Toast.LENGTH_LONG).show();
                                 e.printStackTrace();
@@ -80,7 +82,6 @@ public class WithdrawActivity extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-
                         }
                     })
             {
@@ -95,15 +96,12 @@ public class WithdrawActivity extends AppCompatActivity {
                     return params;
                 }
             };
-
             VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
         });
-
 
         findViewById(R.id.back_imageview).setOnClickListener(view ->{
             super.onBackPressed();
         });
-
     }
 
     private void showInfo(String title, String description){
