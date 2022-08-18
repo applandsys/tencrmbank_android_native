@@ -64,6 +64,9 @@
                 android:background="@drawable/bg_settings_btn"
                 android:padding="8dp"
                 android:text="জেলা"
+                android:hint="জেলা"
+                android:textColorHint="@color/white"
+                app:hintTextColor="@color/white"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
@@ -76,6 +79,9 @@
                 android:background="@drawable/bg_settings_btn"
                 android:padding="8dp"
                 android:text="থানা"
+                android:hint="থানা"
+                android:textColorHint="@color/white"
+                app:hintTextColor="@color/white"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
@@ -88,6 +94,9 @@
                 android:background="@drawable/bg_settings_btn"
                 android:padding="8dp"
                 android:text="পোস্ট অফিস"
+                android:hint="পোস্ট অফিস"
+                android:textColorHint="@color/white"
+                app:hintTextColor="@color/white"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
@@ -100,6 +109,9 @@
                 android:background="@drawable/bg_settings_btn"
                 android:padding="8dp"
                 android:text="বাড়ি নং/রাস্তা/গ্রাম/সেক্টর"
+                android:hint="বাড়ি নং/রাস্তা/গ্রাম/সেক্টর"
+                android:textColorHint="@color/white"
+                app:hintTextColor="@color/white"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
@@ -112,6 +124,9 @@
                 android:background="@drawable/bg_settings_btn"
                 android:padding="8dp"
                 android:text="পোস্ট কোড"
+                android:hint="পোস্ট কোড"
+                android:textColorHint="@color/white"
+                app:hintTextColor="@color/white"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp" />

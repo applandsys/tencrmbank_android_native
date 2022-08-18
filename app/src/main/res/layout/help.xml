@@ -78,6 +78,7 @@
                 app:elevation="20dp" />
 
             <Button
+                android:id="@+id/facebok_page"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
@@ -92,6 +93,7 @@
                 app:elevation="20dp" />
 
             <Button
+                android:id="@+id/youtube"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
@@ -106,6 +108,7 @@
                 app:elevation="20dp" />
 
             <Button
+                android:id="@+id/messenger"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
@@ -120,6 +123,7 @@
                 app:elevation="20dp" />
 
             <Button
+                android:id="@+id/review"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
@@ -130,6 +134,21 @@
                 android:drawableLeft="@drawable/play_store_24"
                 android:drawablePadding="8dp"
                 android:text="রিভিউ দিন"
+                android:textSize="18sp"
+                app:elevation="20dp" />
+
+            <Button
+                android:id="@+id/comlain"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/bg_gradient_rec"
+                android:drawableLeft="@drawable/ic_complaint_24"
+                android:drawablePadding="8dp"
+                android:text="অভিযোগ করুন"
                 android:textSize="18sp"
                 app:elevation="20dp" />
 

@@ -109,8 +109,7 @@ public class LoginActivity extends AppCompatActivity {
 
         info.setOnClickListener(view -> {
             if(user_id==null && login_id==null){
-               // Toast.makeText(getApplicationContext(), "Register/Login First", Toast.LENGTH_SHORT).show();
-                openAlert();
+                startActivity(new Intent(getApplicationContext(), AttentionActivity.class));
             }else{
                 startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
             }

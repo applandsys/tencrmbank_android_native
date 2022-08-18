@@ -47,4 +47,11 @@ public class URLs {
     public static final String ADDRESS_INFO = ROOT_URL + "api/v2/address_info";
     public static final String UPDATE_ADDRESS = ROOT_URL + "api/v2/update_address";
 
+    public static final String FACEBOOK=  "https://10crmbank.com/info/fb.php";
+    public static final String YOUTUBE=  "https://10crmbank.com/info/yt.php";
+    public static final String MESSENGER=  "https://10crmbank.com/info/msg.php";
+    public static final String REVIEW=  "https://10crmbank.com/info/psre.php";
+    public static final String COMPLAIN=  "https://10crmbank.com/info/cpn.php";
+
+
 }

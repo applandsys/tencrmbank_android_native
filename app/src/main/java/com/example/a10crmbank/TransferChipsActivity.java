@@ -94,7 +94,7 @@ public class TransferChipsActivity extends AppCompatActivity {
                             try {
                                 //converting response to json object
                                 JSONObject obj = new JSONObject(response);
-                                Toast.makeText(getApplicationContext(),obj.getString("message"),Toast.LENGTH_LONG).show();
+                                showInfo(obj.getString("title"), obj.getString("message"));
                             } catch (JSONException e) {
                                 Toast.makeText(getApplicationContext(),e.toString(),Toast.LENGTH_LONG).show();
                                 e.printStackTrace();

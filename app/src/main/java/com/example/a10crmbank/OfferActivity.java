@@ -38,16 +38,17 @@ public class OfferActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                       Log.d("fuck",response);
                         try {
+
                             //converting response to json object
                             JSONObject obj = new JSONObject(response);
                             offer_title.setText(obj.getString("offer_name"));
                             offer_content.setText(obj.getString("offer_detail"));
                            // Toast.makeText(getApplicationContext(),obj.getString("offer_name"),Toast.LENGTH_LONG).show();
 
-
                         } catch (JSONException e) {
-                            Toast.makeText(getApplicationContext(),e.toString(),Toast.LENGTH_LONG).show();
+                            Log.d("fuck",e.toString());
                             e.printStackTrace();
                         }
                     }
@@ -55,7 +56,7 @@ public class OfferActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        Log.d("fuck",error.toString());
                     }
                 }
         )
@@ -65,8 +66,6 @@ public class OfferActivity extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
                 params.put("action", "offer");
                 params.put("version", "1");
-                params.put("userid", user_id);
-                params.put("loginid", login_id);
                 return params;
             };
         };

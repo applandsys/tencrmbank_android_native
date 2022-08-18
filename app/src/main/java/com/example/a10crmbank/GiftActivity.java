@@ -118,9 +118,11 @@ public class GiftActivity extends AppCompatActivity {
                                 JSONObject obj = new JSONObject(response);
                                 String status = obj.getString("status");
                                 String message = obj.getString("message");
-                                Log.d("fuck",status);
+                                String title = obj.getString("title");
+                                Log.d("fuck",URLs.GIFT_TPG);
                                 if(status.matches("pushed") ){
-                                    showInfo("Paused","Account is paused");
+                                    showInfo(title, message);
+                                   // showInfo("Paused","Account is paused");
                                     return;
                                 }
                             } catch (JSONException e) {
